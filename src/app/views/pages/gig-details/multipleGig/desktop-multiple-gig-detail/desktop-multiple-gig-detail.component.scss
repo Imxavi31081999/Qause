@@ -1010,7 +1010,7 @@ a:hover {
   width: 15px;
 }
 .ra-timeline-marker:before {
-  background: #FF6B6B;
+  background: #f7a212;
   border: 3px solid transparent;
   border-radius: 100%;
   content: "";
@@ -1038,7 +1038,7 @@ a:hover {
 
 .ra-timeline-item:not(.period):hover .ra-timeline-marker:before {
   background: transparent;
-  border: 3px solid #FF6B6B;
+  border: 3px solid #f7a212;
 }
 
 /*----- ra-timeline CONTENT -----*/
@@ -1186,8 +1186,212 @@ a:hover {
 ----------------------------------------------*/
 .marker-outline .ra-timeline-marker:before {
   background: transparent;
-  border-color: #FF6B6B;
+  border-color: #f7a212;
 }
 .marker-outline .ra-timeline-item:hover .ra-timeline-marker:before {
-  background: #FF6B6B;
+  background: #f7a212;
+}
+
+
+
+
+.h-scroll {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+.card-img-overlay {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  background: rgb(0 0 0 / 34%);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.25rem;
+  border-radius: calc(0.25rem - 1px);
+}
+.card-img-overlay:hover {
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  background: rgb(0 0 0 / 34%);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.25rem;
+  border-radius: calc(0.25rem - 1px);
+}
+
+// .h-scroll {
+//   overflow-x: auto;
+//   scrollbar-width: none;
+// }
+
+.card-img-overlay:hover {
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  background: rgb(0 0 0 / 34%);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.25rem;
+  border-radius: calc(0.25rem - 1px);
+}
+
+.card-img-overlay {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  background: rgb(0 0 0 / 34%);
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.25rem;
+  border-radius: calc(0.25rem - 1px);
+}
+.center-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.h-scroll {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+p {
+  font-weight: 300;
+}
+a {
+  color: #6c6d6d;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: block;
+  letter-spacing: 0.3em;
+  font-size: 0.6em;
+  font-weight: 400;
+  background: #252727;
+  padding: 0.3rem 1rem;
+  margin: 1.9rem 0 0 0;
+  float: right;
+}
+a:hover {
+  color: white;
+  background: #004ffc;
+  border-bottom: 0.35em solid black;
+}
+strong {
+  font-weight: 600;
+}
+h1 {
+  font-family: 'Saira', sans-serif;
+  letter-spacing: 1.5px;
+  color: white;
+  font-weight: 400;
+  font-size: 2.4em;
+}
+#timeline-new-content {
+  margin-top: 50px;
+  text-align: center;
+}
+/* timeline-new */
+.timeline-new {
+  border-left: 4px solid #454545;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(27, 27, 27, 0.8);
+  font-family: 'Chivo', sans-serif;
+  margin: 50px auto;
+  /* letter-spacing: 0.5px; */
+  position: relative;
+  line-height: 1.4em;
+  font-size: 1.03em;
+  padding: 50px;
+  list-style: none;
+  text-align: left;
+  font-weight: 100;
+  max-width: 30%;
+}
+.timeline-new h1 {
+  font-family: 'Saira', sans-serif;
+  letter-spacing: 1.5px;
+  font-weight: 100;
+  font-size: 1.4em;
+}
+.timeline-new h2,
+.timeline-new h3 {
+  font-family: 'Saira', sans-serif;
+  letter-spacing: 1.5px;
+  font-weight: 400;
+  font-size: 1.4em;
+}
+.timeline-new .event {
+  border-bottom: 1px solid rgb(0, 0, 0);
+  padding-bottom: 25px;
+  margin-bottom: 50px;
+  position: relative;
+}
+.timeline-new .event:last-of-type {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border: none;
+}
+.timeline-new .event:before,
+.timeline-new .event:after {
+  position: absolute;
+  display: block;
+  top: 0;
+}
+.timeline-new .event:before {
+  left: -217.5px;
+  color: rgb(0, 0, 0);
+  content: attr(data-date);
+  text-align: right;
+  font-weight: 100;
+  font-size: 0.9em;
+  min-width: 120px;
+  font-family: 'Saira', sans-serif;
+}
+.timeline-new .event:after {
+  box-shadow: 0 0 0 4px #a97309;
+  left: -57.85px;
+  background: #313534;
+  border-radius: 50%;
+  height: 11px;
+  width: 11px;
+  content: "";
+  top: 5px;
+}
+
+
+.ranew-timeline-marker:after {
+  content: "";
+  width: 3px;
+  background: #CCD5DB;
+  display: block;
+  position: absolute;
+  top: 24px;
+  bottom: 0;
+  left: 6px;
+}
+
+.ranew-timeline-marker:before {
+  background: #f7a212;
+  border: 3px solid transparent;
+  border-radius: 100%;
+  content: "";
+  display: block;
+  height: 15px;
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 15px;
+  transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
 }

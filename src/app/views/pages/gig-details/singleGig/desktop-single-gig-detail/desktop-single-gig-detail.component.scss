@@ -612,6 +612,10 @@ a {
   overflow-x: auto;
   scrollbar-width: none;
 }
+::-webkit-scrollbar {
+  display: none;
+}
+
 
 /* ::-webkit-scrollbar-track
 {
@@ -637,9 +641,6 @@ a {
   overflow-x: auto;
 } */
 
-::-webkit-scrollbar {
-  display: none;
-}
 
 .head-img {
   height: 200px;

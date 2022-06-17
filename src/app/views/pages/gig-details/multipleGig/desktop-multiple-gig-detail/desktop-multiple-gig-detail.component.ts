@@ -20,6 +20,8 @@ export class DesktopMultipleGigDetailComponent implements OnInit {
   questionsValues;
   requests;
 
+  date = "13 march 2020"
+
   needQuestions;
 
   questionKeys = [];
