@@ -1033,7 +1033,15 @@ a:hover {
   left: 6px;
 }
 .ra-timeline-item:last-child .ra-timeline-marker:after {
-  content: none;
+ 
+  content: "";
+  width: 3px;
+  background: #CCD5DB;
+  display: block;
+  position: absolute;
+  top: 24px;
+  bottom: 0;
+  left: 6px;
 }
 
 .ra-timeline-item:not(.period):hover .ra-timeline-marker:before {
@@ -1394,4 +1402,18 @@ h1 {
   left: 0;
   width: 15px;
   transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+// .ra-timeline-item[_ngcontent-ien-c245]:last-child .ra-timeline-marker[_ngcontent-ien-c245]:after {
+//   /* content: none; */
+// }
+.ra-timeline-marker::after {
+  content: "";
+  width: 3px;
+  background: #CCD5DB;
+  display: block;
+  position: absolute;
+  top: 24px;
+  bottom: 0;
+  left: 6px;
 }
