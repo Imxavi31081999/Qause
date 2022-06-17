@@ -1,0 +1,12 @@
+<form id="navForm" style="width: auto;" class="search-form searchDisplay">
+    <div class="input-group w-100">
+        <div class="input-group-prepend">
+            <div (click)="doSearch()" class="input-group-text pl-3">
+                <i class="feather icon-search"></i>
+            </div>
+        </div>
+        <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="query"
+            class="form-control" id="navbarForm" placeholder="Search here...">
+    </div>
+</form>
+

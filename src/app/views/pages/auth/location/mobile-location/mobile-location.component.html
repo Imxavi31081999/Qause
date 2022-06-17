@@ -1,0 +1,91 @@
+<div style="padding: 0" class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <div class="bg-main">
+        <div class="bg-icons">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              /* margin: 2rem 2rem 0rem; */
+              color: white;
+              font-size: 22px;
+            "
+            class="content-box"
+          >
+            <i
+              style="cursor: pointer"
+              (click)="goBack()"
+              class="fas fa-arrow-left"
+            ></i>
+
+            <i class="fas fa-share-alt"></i>
+          </div>
+        </div>
+        <div class="main-content">
+          <div class="head-profile-heading">
+            <div class="card border-0">
+              <img
+                src="../../../../../assets/images/location1.png"
+                class="card-img"
+                alt="..."
+              />
+            </div>
+
+            <div class="row">
+              <div class="box-seciton-head w-100">
+                <br />
+                <h4>Share Your <span>Location</span></h4>
+
+                <div class="input-group mb-3">
+                  <br />
+                  <input
+                    [(ngModel)]="addressField"
+                    ngx-google-places-autocomplete
+                    (input)="detectInput($event)"
+                    (onAddressChange)="handleAddressChange($event)"
+                    #addressSearch
+                    (change)="changeHandler()"
+                    style="height: auto"
+                    type="text"
+                    class="form-control"
+                    id="address"
+                    placeholder="Select Location"
+                    aria-label="Recipient's username"
+                    aria-describedby="button-addon2"
+                  />
+                  <div class="input-group-append">
+                    <button
+                      class="btn btn-outline-secondary"
+                      style="border-radius: 0px"
+                      type="button"
+                      id="button-addon2"
+                    >
+                      <i
+                        style="color: #f79e09; font-size: 2rem"
+                        class="fas fa-location"
+                      ></i>
+                    </button>
+                  </div>
+                </div>
+                <span *ngIf="isaddress" class="errorClass"
+                  >Location is required</span
+                >
+                <div class="row">
+                  <button
+                    type="button"
+                    [disabled]="disableaddress"
+                    (click)="next()"
+                    class="btn btn-primary btn-lg mx-auto manClass"
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

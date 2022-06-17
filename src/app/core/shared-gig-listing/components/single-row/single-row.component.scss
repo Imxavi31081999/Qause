@@ -1,0 +1,100 @@
+body h1 h2 h3 h4 h5 h6 p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.br-30 {
+  border-radius: 30px;
+}
+
+.media-sec-card h5 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  color: black;
+}
+
+.media-sec-card p {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: #253dc0;
+}
+
+.time-upper-span {
+  position: absolute;
+  right: 50px;
+  color: #fff;
+  background-color: #253dc0;
+  padding: 7px 12px;
+  border-radius: unset;
+}
+
+.money-title span {
+  font-weight: 800;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+}
+
+.cardprogress {
+  display: -ms-flexbox;
+  display: flex;
+  height: 9px;
+  overflow: hidden;
+  line-height: 0;
+  font-size: 0.75rem;
+  background-color: #e9ecef;
+  border-radius: 0.2rem;
+}
+
+.cardprogress-bar {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  background-color: #28a745;
+  transition: width 0.6s ease;
+}
+
+.fs-xs {
+  font-size: 85%;
+}
+
+.accept {
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  background: #253dc0;
+  border-color: #253dc0;
+  padding: 8px 30px !important;
+  font-size: 1rem !important;
+  font-weight: bold;
+  color: white;
+}
+
+.bg-yellow {
+  border: 1px solid #d39e00;
+}
+.card {
+  width: 19rem !important;
+  margin: auto !important;
+}
+.icon-c {
+  color: #f7a212;
+}
+
+:host ::ng-deep {
+  .p-carousel .p-carousel-content .p-carousel-prev,
+  .p-carousel .p-carousel-content .p-carousel-next {
+    border: solid 1px rgb(247 158 9) !important;
+    color: #f79e09 !important;
+  }
+  .p-carousel .p-carousel-indicators {
+    display: none;
+  }
+}

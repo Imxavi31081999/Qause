@@ -1,0 +1,45 @@
+<app-navbar (searchEvent)="searchQuery($event)" [queryData]="queryData"> </app-navbar>
+<div class="my-5 ">
+    <div class="flexDisplayMobileHeader">
+        <h2 class=" text-center mb-3 fontSizeMobile">Volunteer Online</h2>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-secondary  m-1 change-width-btn"
+            [ngClass]="{'activeFilter': arrOfCategory.includes(tag.title)}" id="tags" *ngFor="let tag of allCategories"
+            type="submit" (click)='toggleCategory(tag.title)'>{{tag.title}}</button>
+        <button (click)="doCategoryFilter()" class="btn btn-primary m-1 mr-0" id="tags" type="submit"><i
+                data-feather="filter" appFeatherIcon></i>
+            filter</button>
+    </div>
+
+
+
+</div>
+
+
+<div *ngIf="isFilters" class="container">
+    <button (click)="clearQueries()" style="    float: right;" class="btn btn-info">
+        <i class="fas fa-times"></i>
+        Reset Filters
+    </button>
+</div>
+
+
+
+
+
+
+<div style="background-color: #f8f8f8; padding:50px 0;">
+    <div class="container">
+        <app-fundrasing-row [category]="category" [queryData]="queryData"></app-fundrasing-row>
+    </div>
+</div>
+<div class="container">
+    <app-multiple-row [category]="category" [queryData]="queryData"></app-multiple-row>
+</div>
+<div class="container">
+    <app-single-row [category]="category" [queryData]="queryData"></app-single-row>
+</div>
+
+
+<app-donation> </app-donation>

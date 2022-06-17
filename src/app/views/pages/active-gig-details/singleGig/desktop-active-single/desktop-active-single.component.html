@@ -1,0 +1,513 @@
+<app-navbar></app-navbar>
+<div class="head-img">
+  <img
+    src="../../../../../../assets/images/loginimg.jpg"
+    alt=""
+    width="100%"
+    height="100%"
+    style="object-fit: cover"
+  />
+</div>
+
+<div class="col-lg-10 mx-auto">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="py-5">
+        <div class="row p-0">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent font-weight-bold">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Library</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Data</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      <div class="row justify-content-center align-items-center">
+        <div class="card profile-card-1" style="width: 20rem">
+          <img
+            src="../../../../../../assets/images/trust.jpeg"
+            class="rounded-pill mx-auto mt-4"
+            height="60px"
+            width="60px"
+            alt=""
+            srcset=""
+          />
+          <h5 class="text-center px-lg-5 px-md-4 py-3">
+            Life of life trust welfare associaation foundation
+          </h5>
+          <div class="mx-auto pb-5 mb-2">
+            <a href="" class="btn btn-dark"> View Profile </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- card icon with details  -->
+      <div class="row justify-content-center align-items-center">
+        <div class="card profile-card-1 text-center p-3" style="width: 20rem">
+          <div class="logo__life">
+            <img src="assets/images/location.svg" alt="" />
+            <h4 style="color: #7e7e7e" class="small-heading my-3 font-size">
+              Haryana
+            </h4>
+          </div>
+          <div class="logo__clock">
+            <img src="assets/images/clock.svg" class="" alt="" />
+            <h4 style="color: #7e7e7e" class="small-heading my-3 font-size">
+              8hours
+            </h4>
+          </div>
+          <div class="logo__education">
+            <img src="assets/images/Education.svg" alt="" />
+            <h4 style="color: #7e7e7e" class="small-heading my-3 font-size">
+              Social Media
+            </h4>
+          </div>
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+          <p class="button-style-yellow bottom-left-tag">Social Media</p>
+          <p class="button-style-yellow bottom-left-tag">Graphic Desgin</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8 offset-lg-1">
+      <div class="col-lg-12 p-0 m-0">
+        <div class="main-content">
+          <div class="head-profile-heading">
+            <div class="row">
+              <div class="sec-18 mt-4">
+                <h3 style="color: black; font-weight: 800">
+                  Support the differently abled
+                </h3>
+                <p class="font-size">Monday,March 14, 2022</p>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div
+                class="d-flex justify-content-between align-items-center fw-500 py-2 px-3 br-15 text-white box-shadow"
+              >
+                <div class="fw-normal px-2 border-right">Contact Person</div>
+                <div class="px-2">
+                  <i class="fa fa-user" aria-hidden="true"></i
+                  ><span style="font-weight: 600"> Nitesh Kumar </span>
+                </div>
+                <div class="px-2">
+                  <i class="fa fa-phone" aria-hidden="true"></i
+                  ><span style="font-weight: 600"> +91 7982166843 </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div
+                class="btn-toolbar"
+                role="toolbar"
+                aria-label="Toolbar with button groups"
+                style="height: 45px"
+              >
+                <div
+                  class="btn-group btn-group-lg mr2 box-shadow"
+                  role="group"
+                  aria-label="Basic example"
+                  style="height: 45px"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-g-color py-3 fw-600 d-flex"
+                    style="
+                      padding-right: 0;
+                      padding-bottom: 0 !important;
+                      padding-top: 12px !important;
+                    "
+                  >
+                    <i
+                      class="fas fa-phone-alt"
+                      style="position: relative; top: 3px"
+                    ></i>
+                    <div
+                      style="
+                        width: 1px;
+                        background-color: #ca820b;
+                        height: 35px;
+                        position: relative;
+                        margin-left: 20px;
+                        bottom: 7px;
+                      "
+                    ></div>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-g-color py-3 fw-600 d-flex"
+                    style="
+                      padding-right: 0;
+                      padding-bottom: 0 !important;
+                      padding-top: 12px !important;
+                    "
+                  >
+                    <i
+                      class="fas fa-comment"
+                      style="position: relative; top: 3px"
+                    ></i>
+                    <div
+                      style="
+                        width: 1px;
+                        background-color: #ca820b;
+                        height: 35px;
+                        position: relative;
+                        margin-left: 21px;
+                        bottom: 7px;
+                      "
+                    ></div>
+                  </button>
+                  <input
+                    type="file"
+                    multiple
+                    class="file-input"
+                    hidden
+                    (change)="onFileSelected($event)"
+                    #fileUpload
+                  />
+                  <button
+                    type="button"
+                    class="btn btn-g-color py-3 fw-600"
+                    *ngIf="
+                      !(filesLength >= 1 && filesLength < 4) ||
+                      filesLength == 0 ||
+                      fileSizeError
+                    "
+                    style="font-size: inherit; padding-top: 14px !important"
+                    (click)="fileUpload.click()"
+                  >
+                    <i class="fas fa-upload"></i> Select File
+                  </button>
+                  <button
+                    (click)="docSubmit()"
+                    *ngIf="
+                      filesLength >= 1 && filesLength < 4 && !fileSizeError
+                    "
+                    type="button"
+                    class="btn btn-g-color py-3 fw-600"
+                    style="font-size: inherit; padding-top: 14px !important"
+                  >
+                    <i class="fas fa-upload"></i> Upload
+                  </button>
+                </div>
+                <div
+                  class="btn-group btn-group-lg mx-3 box-shadow"
+                  role="group"
+                  aria-label="Second group"
+                  style="height: 45px"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-g-color fw-600"
+                    style="
+                      font-size: 13px;
+                      width: 18vw;
+                      font-weight: 700;
+                      padding-top: 10px;
+                    "
+                  >
+                    I’ve completed my task
+                  </button>
+                </div>
+              </div>
+              <div class="d-flex flex-column">
+                <div>
+                  <h5 class="mt-2">{{ firstFileName }}</h5>
+                </div>
+                <div>
+                  <h5 class="mt-1">{{ secondFileName }}</h5>
+                </div>
+                <div>
+                  <h5 class="mt-1">{{ thirdFileName }}</h5>
+                </div>
+                <div>
+                  <h5 class="mt-2" *ngIf="moreThenThreeFiles">
+                    Select Maximum of 3 files
+                  </h5>
+                </div>
+                <div>
+                  <h5 class="mt-1" *ngIf="fileSizeError">
+                    File Should Be less then 1 MB
+                  </h5>
+                </div>
+                <div>
+                  <h5>{{ this.uploadProgress }}</h5>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="money-donate mt-4">
+                <div>
+                  <h5 class="" style="font-weight: 800; color: black">
+                    Submitted on
+                  </h5>
+                </div>
+              </div>
+              <div class="mt-2">
+                <p style="font-size: 15px; color: #6d6d6d; font-weight: 400">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
+                  dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                  minim veniam, quis nostrud exercitation ullamco laboris nisi
+                  ut aliquip ex ea commodo consequat.
+                </p>
+
+                <p style="font-size: 15px; color: #6d6d6d; font-weight: 400">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Ipsam doloremque eos accusantium aspernatur eum architecto
+                  iste enim temporibus nesciunt ab ipsum, quis non id! Commodi
+                  quidem assumenda aliquam dolorum dolores.
+                </p>
+              </div>
+            </div>
+            <div class="money-donate mt-4">
+              <div>
+                <h5 class="m-0" style="color: black; font-weight: 800">
+                  <i class="fa fa-paperclip" aria-hidden="true"></i> Attachment
+                </h5>
+              </div>
+              <div class="mt-2">
+                <img
+                  src="../../../../../../assets/images/cool-background.svg"
+                  height="200px"
+                  class="border"
+                  alt=""
+                  srcset=""
+                />
+              </div>
+            </div>
+            <div class="money-donate mt-4">
+              <div>
+                <h5 class="m-0" style="color: black; font-weight: 800">
+                  Links
+                </h5>
+              </div>
+              <div class="mt-2">
+                <p style="font-size: 15px; color: #6d6d6d; font-weight: 400">
+                  <i class="fa fa-globe p-text-c" aria-hidden="true"></i>
+                  www.parakshala Foundation.com
+                </p>
+                <p style="font-size: 15px; color: #6d6d6d; font-weight: 400">
+                  <i class="fab fa-facebook-f p-text-c" aria-hidden="true"></i>
+                  www.parakshala Foundation.com
+                </p>
+                <p style="font-size: 15px; color: #6d6d6d; font-weight: 400">
+                  <i class="fab fa-instagram p-text-c" aria-hidden="true"></i>
+                  www.parakshala Foundation.com
+                </p>
+              </div>
+            </div>
+
+            <!-- subject  -->
+            <div class="money-donate mt-4">
+              <div>
+                <h5 class="m-0" style="color: black; font-weight: 800">
+                  Subject
+                </h5>
+              </div>
+              <div class="mt-2 d-flex">
+                <p
+                  class=""
+                  style="font-size: 15px; color: #6d6d6d; font-weight: 400"
+                >
+                  English
+                </p>
+                <p
+                  class="mx-5"
+                  style="font-size: 15px; color: #6d6d6d; font-weight: 400"
+                >
+                  Hindi
+                </p>
+              </div>
+            </div>
+            <!-- subject-End  -->
+
+            <!-- Tagline -->
+            <div class="money-donate mt-4">
+              <div>
+                <h5 class="m-0" style="color: black; font-weight: 800">
+                  Tagline
+                </h5>
+              </div>
+              <div class="mt-2">
+                <p style="font-size: 15px; color: #6d6d6d; font-weight: 400">
+                  Feed the World You Want to Live In.
+                </p>
+              </div>
+            </div>
+            <!-- Tagline End -->
+
+            <!-- Day and time  -->
+            <div class="money-donate mt-4">
+              <div>
+                <h5 class="m-0" style="font-weight: 800;">Subject</h5>
+              </div>
+              <div class="mt-2 d-flex">
+                <p style="font-size: 15px; color: #6d6d6d; font-weight: 400">
+                  <i
+                    class="fas fa-calendar-alt p-text-c"
+                    aria-hidden="true"
+                  ></i>
+                  Mon-Fri
+                </p>
+                <p
+                  class="mx-5"
+                  style="font-size: 15px; color: #6d6d6d; font-weight: 400"
+                >
+                  <i class="far fa-clock p-text-c" aria-hidden="true"></i> 9am -
+                  11pm IST
+                </p>
+              </div>
+            </div>
+            <!-- Day and time end  -->
+            <!-- Word -->
+            <div class="money-donate mt-4">
+              <div>
+                <h5 class="m-0" style="font-weight: 800;">Word</h5>
+              </div>
+              <div class="mt-2">
+                <p style="font-size: 15px; color: #6d6d6d; font-weight: 400">
+                  300
+                </p>
+              </div>
+            </div>
+            <!-- word end-->
+            <!-- Language preferernce-->
+            <div class="money-donate mt-4">
+              <div>
+                <h5 class="m-0" style="color: black; font-weight: 800">
+                  Language Preference
+                </h5>
+              </div>
+              <div class="mt-2">
+                <p style="font-size: 15px; color: #6d6d6d; font-weight: 400">
+                  English
+                </p>
+              </div>
+            </div>
+            <!-- Language Preference End -->
+            <!-- Refer  -->
+            <div class="money-donate mt-4">
+              <div>
+                <h5 class="m-0" style="color: black; font-weight: 800">
+                  Subject
+                </h5>
+              </div>
+              <div class="mt-2 d-flex justify-content-between">
+                <a href="https://www.qause.com/about"
+                  >https://www.qause.com/about</a
+                >
+                <a href="https://www.qause.com/about"
+                  >https://www.qause.com/about</a
+                >
+              </div>
+            </div>
+            <!-- Refer-End  -->
+            <!-- Report-->
+            <div class="money-donate mt-4">
+              <div>
+                <h5 class="m-0" style="color: black; font-weight: 800">
+                  Report
+                </h5>
+              </div>
+              <div class="mt-2">
+                <p style="font-size: 15px; color: #6d6d6d; font-weight: 400">
+                  Annual
+                </p>
+              </div>
+            </div>
+            <!-- Report End -->
+
+            <!-- venue-->
+            <div class="money-donate mt-4">
+              <div>
+                <h5 class="m-0" style="color: black; font-weight: 800">
+                  Venue (Location)
+                </h5>
+              </div>
+              <div class="mt-2">
+                <p style="font-size: 15px; color: #6d6d6d; font-weight: 400">
+                  <i style="color: #f7a213" class="fas fa-map-marker-alt"></i>
+
+                  Gurugram (Haryana)
+                </p>
+              </div>
+            </div>
+            <!-- Venue End -->
+
+            <!-- Blog-->
+            <div class="money-donate mt-4">
+              <div>
+                <h5 class="m-0" style="color: black; font-weight: 800">
+                  Blog Topic
+                </h5>
+              </div>
+              <div class="mt-2">
+                <p style="font-size: 15px; color: #6d6d6d; font-weight: 400">
+                  Lorem ipsum dolor sit amet, consectetur
+                </p>
+              </div>
+            </div>
+            <!-- Blog End -->
+            <!-- Requirement-->
+            <div class="money-donate mt-4">
+              <div>
+                <h5 class="m-0" style="color: black; font-weight: 800">
+                  Content requirement
+                </h5>
+              </div>
+              <div class="mt-2">
+                <p style="font-size: 15px; color: #6d6d6d; font-weight: 400">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+              </div>
+            </div>
+            <!-- Requirement End -->
+
+            <!--Attachment-->
+            <div class="mt-4">
+              <div>
+                <h5 class="m-0 fw-600" style="color: black; font-weight: 800">
+                  Attachment
+                </h5>
+              </div>
+              <div class="mt-2">
+                <p style="font-size: 15px; color: #6d6d6d; font-weight: 400">
+                  <i class="fas fa-file-pdf pdf-icon fa-2x"></i>
+                  <small> Logoref.pdf</small>
+                </p>
+              </div>
+            </div>
+            <!-- Attachment End -->
+            <div
+              class="btn-group btn-group-lg mt-4"
+              role="group"
+              aria-label="Second group"
+            >
+              <button
+                type="button"
+                class="btn btn-g-color-s py-3 fw-600"
+                style="
+                  font-size: inherit;
+                  padding: 10px 20px !important;
+                  border-radius: 5px;
+                "
+              >
+                I’ve completed my task
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

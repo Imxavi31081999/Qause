@@ -1,0 +1,535 @@
+<div class="container p-0">
+    <div class="row my-5">
+        <div class="head">
+            <h3> <span class=" font-weight-bolder"> Edit Profile</span> /
+                <span>{{currentBreadcrumb?currentBreadcrumb:'Personal Info' }}</span>
+            </h3>
+        </div>
+    </div>
+    <div class="row my-3 p">
+        <div class="col-md-3">
+            <div class="list-group list-group-flush" id="list-tab" role="tablist">
+                <a (click)="updateBreadcrumb(0)" class="list-group-item list-group-item-action"
+                    id="list-Personal-info-list" data-toggle="list" href="#list-Personal-info" role="tab"
+                    aria-controls="Personal-info">Personal-info</a>
+                <a (click)="updateBreadcrumb(1)" class="list-group-item list-group-item-action" id="list-Bio-list"
+                    data-toggle="list" href="#list-Bio" role="tab" aria-controls="profile">Bio</a>
+                <a (click)="updateBreadcrumb(2)" class="list-group-item list-group-item-action" id="list-interest-list"
+                    data-toggle="list" href="#list-interest" role="tab" aria-controls="interest">Interest</a>
+                <a (click)="updateBreadcrumb(5)" class="list-group-item list-group-item-action" id="links"
+                    data-toggle="list" href="#list-links" role="tab" aria-controls="links">links</a>
+                <a (click)="updateBreadcrumb(6)" class="list-group-item list-group-item-action"
+                    id="list-accsetting-list" data-toggle="list" href="#list-accsetting" role="tab"
+                    aria-controls="accsetting">Account Settings</a>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-8 ">
+            <div class="tab-content " id="nav-tabContent">
+
+                <!-- start Profile info  -->
+                <div class="tab-pane fade show active" id="list-Personal-info" role="tabpanel"
+                    aria-labelledby="list-Personal-info-list">
+
+                    <div class="row mb-5">
+                        <h4 class=" font-weight-bolder">Personal Info</h4>
+
+                    </div>
+                    <div class="row">
+                        <div>
+                            <img *ngIf="!this.previewObject.show"
+                                [src]=" userDetails? userDetails.profilePicture:'../../../../../assets/images/profilePage/profileImg.png' "
+                                class="img-fluid" style="
+                                height: 100px;
+width: 100px;
+border-radius: 50%;
+box-shadow: 0 1px 2px #00000061;
+background: white;
+                            " alt="">
+
+                            <img *ngIf="this.previewObject.show" [src]=" this.previewObject.file" class="img-fluid"
+                                style="
+height: 100px;
+width: 100px;
+border-radius: 50%;
+box-shadow: 0 1px 2px #00000061;
+background: white;
+" alt="">
+
+
+                            <p *ngIf="this.previewObject.show" style="margin-top: 0.5rem; text-align:center;">
+
+                                {{fileName }}
+                            </p>
+                            <!-- file upload Input start -->
+                            <input type="file" class="file-input " hidden (change)="onFileSelected($event)" #fileUpload>
+                            <!-- file upload Input end -->
+
+
+
+                        </div>
+                        <div class="my-auto ml-4">
+                            <button type="button" (click)="fileUpload.click()"
+                                class="btn btn-outline-secondary mr-3 profileEditButtons">Select
+                                Image</button>
+                            <button (click)="  docSubmit() " type="button"
+                                class="btn btn-outline-secondary mr-3 profileEditButtons">
+                                Upload
+                            </button>
+                            <button (click)="deleteProfileImg()" type="button" style="    background: #cdcdcd;"
+                                class="btn btn-outline-success profileEditButtons">Delete</button>
+                        </div>
+                    </div>
+
+                    <!-- this will be displayed when file is uplaoding -->
+                    <div class="mt-4 upload-text" style="margin: auto;" *ngIf="uploadProgress text-center">
+                        Uploaded {{uploadProgress}}%
+                    </div>
+
+                    <div class="row mt-5">
+                        <form (ngSubmit)="onPersonalInfoFormSubmit()" [formGroup]="personalInfoForm" novalidate>
+                            <div class="form-row mb-4">
+                                <div class="form-group col-md-6">
+                                    <label for="name" class=" font-weight-bolder"> Name</label>
+                                    <input type="text" [formControl]="personalInfoForm.controls.name"
+                                        class="form-control" id="name" placeholder=" name"
+                                        [ngClass]="{'changeBorderColorOfInputWhenDuringError':personalInfoForm.controls.name.invalid && (personalInfoForm.controls.name.dirty || personalInfoForm.controls.name.touched)}">
+                                    <div
+                                        *ngIf="personalInfoForm.controls.name.invalid && (personalInfoForm.controls.name.dirty || personalInfoForm.controls.name.touched)">
+                                        <div *ngIf="personalInfoForm.controls.name.errors.required">
+                                            <span class="errorClass"> name is required</span>
+                                        </div>
+                                        <div *ngIf="personalInfoForm.controls.name.errors.minlength">
+                                            <span class="errorClass"> name cannot be less then 2 character</span>
+                                        </div>
+                                        <div *ngIf="personalInfoForm.controls.name.errors.maxlength">
+                                            <span class="errorClass"> name cannot be more than 40 character</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label class=" font-weight-bolder" for="gender">Gender </label>
+
+                                    <select type="text" class="form-control"
+                                        [formControl]="personalInfoForm.controls.gender" id="gender">
+                                        <option value="Male"> Male</option>
+                                        <option value="Female"> Female</option>
+                                        <option value="Other"> Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class=" font-weight-bolder" for="dateOfBirth">Date of Birth</label>
+                                    <input type="date" class="form-control"
+                                        [formControl]="personalInfoForm.controls.birth" id="dateOfBirth"
+                                        placeholder="DOB"
+                                        [ngClass]="{'changeBorderColorOfInputWhenDuringError':personalInfoForm.controls.birth.invalid && (personalInfoForm.controls.birth.dirty || personalInfoForm.controls.birth.touched)}">
+                                    <div
+                                        *ngIf="personalInfoForm.controls.birth.invalid && (personalInfoForm.controls.birth.dirty || personalInfoForm.controls.birth.touched)">
+                                        <div *ngIf="personalInfoForm.controls.birth.errors.required">
+                                            <span class="errorClass"> Date of Birth is required.</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label class=" font-weight-bolder" for="addLanguages">Languages</label>
+                                            <mat-chip-list #chipList aria-label="Fruit selection">
+                                                <div style="width: 100%;">
+                                                    <mat-chip *ngFor="let language of languageKnown"
+                                                        [selectable]="selectable" [removable]="removable"
+                                                        (removed)="removeLanguage(language)">
+                                                        {{language}}
+                                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                                    </mat-chip>
+
+                                                </div>
+
+
+                                                <input #languageInput type="text" class="form-control"
+                                                    [formControl]="personalInfoForm.controls.languageKnown"
+                                                    id="addLanguages" placeholder="..Add language "
+                                                    [matAutocomplete]="languageAtuo" [matChipInputFor]="chipList"
+                                                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                    (matChipInputTokenEnd)="addLanguage($event)">
+                                            </mat-chip-list>
+
+                                            <!-- <mat-form-field class="example-chip-list"> -->
+
+                                            <mat-autocomplete #languageAtuo="matAutocomplete"
+                                                (optionSelected)="selectedLanguage($event)">
+                                                <mat-option *ngFor="let language of filteredLanguages | async"
+                                                    [value]="language">
+                                                    {{language}}
+                                                </mat-option>
+                                            </mat-autocomplete>
+                                            <!-- </mat-form-field> -->
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                            <div>
+                                <button type="submit" [disabled]="!personalInfoForm.valid"
+                                    class="btn btnimp btn-warning profileEditButtons profileEditButtonsSave">Save
+                                    Changes</button>
+                                <button type="button"
+                                    class="btn mx-3 btnimp btn-secondary profileEditButtons profileEditButtonsCancel">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- end Profile info  -->
+
+
+                <!-- start Bio   -->
+
+                <div class="tab-pane fade" id="list-Bio" role="tabpanel" aria-labelledby="list-bio-list">
+                    <h4 class=" font-weight-bolder mb-5">Bio</h4>
+                    <div class="form-group mb-4">
+                        <!-- <label for="exampleFormControlTextarea1">Example textarea</label> -->
+                        <textarea [(ngModel)]="bio" class="form-control" id="exampleFormControlTextarea1"
+                            style="height: 100px;" placeholder="Your bio goes here"></textarea>
+                    </div>
+                    <div><button (click)="onSubmintBio()" type="button"
+                            class="btn btnimp btn-warning profileEditButtons profileEditButtonsSave">Save
+                            Changes</button>
+                        <button type="button"
+                            class="btn mx-3 btn-secondary btnimp profileEditButtons profileEditButtonsCancel">Cancel</button>
+                    </div>
+                </div>
+
+                <!-- end Bio   -->
+
+                <!-- interest tabs -->
+                <div class="tab-pane fade" id="list-interest" role="tabpanel" aria-labelledby="list-interest-list">
+
+                    <div class="row row mb-3">
+                        <h4 class=" font-weight-bolder">Interest</h4>
+                    </div>
+                    <div class="row ">
+                        <!-- <button type="button" class="btn btn-outs-s btn-outline m-1">Content Writing <i
+                                class="far fa-times-circle"></i></button>
+                        <button type="button" class="btn btn-outs-s btn-outline m-1">Content Writing <i
+                                class="far fa-times-circle"></i></button>
+                        <button type="button" class="btn btn-outs-s btn-outline m-1">Content Writing <i
+                                class="far fa-times-circle"></i></button> -->
+                        <mat-chip-list #chipList aria-label="Fruit selection">
+                            <mat-chip *ngFor="let passion of passions" [selectable]="selectable" [removable]="removable"
+                                (removed)="removePassion(passion)">
+                                {{passion}}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                            </mat-chip>
+                        </mat-chip-list>
+
+
+
+                    </div>
+                    <div class="row mb-4">
+                        <button type="button" (click)="openAddPassionModal(addPassionModal)"
+                            class="btn btn-outs btn-outline  my-4">Add
+                            More
+                            interest</button>
+                    </div>
+                    <div class="row">
+                        <button type="button" (click)="onSubmitPassion() "
+                            class="btn btn-warning profileEditButtons profileEditButtonsSave">Save
+                            Changes</button>
+                        <button type="button"
+                            class="btn mx-3 btn-secondary profileEditButtons profileEditButtonsCancel">Cancel</button>
+                    </div>
+                </div>
+                <!-- interest tabs end -->
+
+
+
+                <!-- link and social link section -->
+                <div class="tab-pane fade" id="list-links" role="tabpanel" aria-labelledby="list-links-list">
+
+                    <h4 class=" font-weight-bolder mb-4"> Links</h4>
+                    <label class=" font-weight-bolder" for="behenceLink">PortFolio links</label>
+
+                    <div class="col-md-12">
+
+                        <div *ngFor="let portfolio of linksForm.portfolioLinks" class="row">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text " id="basic-addon3">{{portfolio.title}}</span>
+                                </div>
+                                <input type="text" class="form-control bl-0" readonly [value]="portfolio.value"
+                                    id="dribbbleLink" placeholder="www.xyz.com" aria-describedby="basic-addon3">
+                            </div>
+                        </div>
+
+                        <div class="row"><button type="button" (click)="openAddLinksModal(addLinksModal)"
+                                class="btn btn-outs mt-3 mb-4">Add Links</button>
+                        </div>
+
+                        <div class="row">
+                            <label class=" font-weight-bolder" for="">Social Media links</label>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text" id="basic-addon3">Instagram</span>
+                                </div>
+                                <input type="text" [(ngModel)]="linksForm.socialMediaLinks.instagram"
+                                    class="form-control bl-0" id="instagramLink" placeholder="www.xyz.com"
+                                    aria-describedby="basic-addon3">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text" id="basic-addon3">Twitter</span>
+                                </div>
+                                <input type="text" [(ngModel)]="linksForm.socialMediaLinks.twitter"
+                                    class="form-control bl-0" id="twitterLink" placeholder="www.xyz.com"
+                                    aria-describedby="basic-addon3">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text" id="basic-addon3">Google</span>
+                                </div>
+                                <input type="text" [(ngModel)]="linksForm.socialMediaLinks.google"
+                                    class="form-control bl-0" id="googleLink" placeholder="www.xyz.com"
+                                    aria-describedby="basic-addon3">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend ">
+                                    <span class="input-group-text" id="basic-addon3">Facebook</span>
+                                </div>
+                                <input type="text" [(ngModel)]="linksForm.socialMediaLinks.facebook"
+                                    class="form-control bl-0" id="facebookLink" placeholder="www.xyz.com"
+                                    aria-describedby="basic-addon3">
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div><button (click)="onSubmitLinks()" type="button"
+                                    class="btn btnimp btn-warning profileEditButtons profileEditButtonsSave">Save
+                                    Changes</button>
+                                <button type="button"
+                                    class="btn mx-3 btn-secondary btnimp profileEditButtons profileEditButtonsCancel">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- link and social link section end -->
+
+                <!-- account setting section -->
+                <div class="tab-pane fade" id="list-accsetting" role="tabpanel" aria-labelledby="list-accsetting-list">
+                    <div class="row mb-3">
+                        <h4 class=" font-weight-bolder">
+                            Account Setting</h4>
+                    </div>
+
+                    <form (ngSubmit)="onAccountFormSubmit()" [formGroup]="accountForm" novalidate>
+                        <div class="row mb-3">
+                            <div class="form-row w-100">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4" class=" font-weight-bolder">Email</label>
+                                    <input [formControl]="accountForm.controls.email" type="email" class="form-control"
+                                        id="inputEmail4" placeholder="xyz@gmail.com"
+                                        [ngClass]="{'changeBorderColorOfInputWhenDuringError':accountForm.controls.email.invalid && (accountForm.controls.email.dirty || accountForm.controls.email.touched)}">
+                                    <div
+                                        *ngIf="accountForm.controls.email.invalid && (accountForm.controls.email.dirty || accountForm.controls.email.touched)">
+                                        <div *ngIf="accountForm.controls.email.errors.pattern">
+                                            <span class="errorClass">Enter a valid email</span>
+                                        </div>
+                                        <div *ngIf="accountForm.controls.email.errors.required">
+                                            <span class="errorClass">Email is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPhone" class=" font-weight-bolder">Phone Number</label>
+                                    <input matInput [formControl]="accountForm.controls.mobile" type="tel"
+                                        class="form-control" id="inputPhone" placeholder="+91 5xxxx xxxxx"
+                                        maxlength="10"
+                                        [ngClass]="{'changeBorderColorOfInputWhenDuringError':accountForm.controls.mobile.invalid && (accountForm.controls.mobile.dirty || accountForm.controls.mobile.touched)}">
+                                    <div
+                                        *ngIf="accountForm.controls.mobile.invalid && (accountForm.controls.mobile.dirty || accountForm.controls.mobile.touched)">
+                                        <div *ngIf="accountForm.controls.mobile.errors.pattern">
+                                            <span class="errorClass">Enter a valid phone number</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3"><button type="submit" [disabled]="!accountForm.valid"
+                                class="btn btnimp btn-warning my-2 profileEditButtons profileEditButtonsSave">Save
+                                Changes</button>
+                        </div>
+                    </form>
+
+
+
+                    <div class="row mb-3">
+                        <h4 class=" font-weight-bolder">
+                            Address</h4>
+                    </div>
+                    <div class="row ">
+                        <form (ngSubmit)="onAddressFormSubmit()" [formGroup]="addressForm" novalidate>
+                            <div class="form-row mb-4">
+                                <div class="form-group col-md-6">
+                                    <label class=" font-weight-bolder" for="inputAddress">Address</label>
+                                    <input ngx-google-places-autocomplete
+                                        (onAddressChange)="handleAddressChange($event)" #addressSearch
+                                        formControlName="address" type="text" class="form-control" id="inputAddress"
+                                        placeholder="1234 Main St"
+                                        [ngClass]="{'changeBorderColorOfInputWhenDuringError':addressForm.controls.address.invalid && (addressForm.controls.address.dirty || addressForm.controls.address.touched)}">
+                                    <div
+                                        *ngIf="addressForm.controls.address.invalid && (addressForm.controls.address.dirty || addressForm.controls.address.touched)">
+                                        <div *ngIf="addressForm.controls.address.errors.required">
+                                            <span class="errorClass"> Address is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label class=" font-weight-bolder" placeholder="sdfasfas fas f"
+                                        for="inputStreet">Street</label>
+                                    <input formControlName="street" id="inputStreet" class="form-control">
+                                    <div
+                                        *ngIf="addressForm.controls.street.invalid && (addressForm.controls.street.dirty || addressForm.controls.street.touched)">
+                                        <div *ngIf="addressForm.controls.street.errors.required">
+                                            <span class="errorClass"> street is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group col-md-6">
+                                    <label class=" font-weight-bolder" for="inputCity">City</label>
+                                    <input formControlName="city" type="text" class="form-control" placeholder="Delhi"
+                                        id="inputCity">
+                                    <div
+                                        *ngIf="addressForm.controls.city.invalid && (addressForm.controls.city.dirty || addressForm.controls.city.touched)">
+                                        <div *ngIf="addressForm.controls.city.errors.required">
+                                            <span class="errorClass">City is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class=" font-weight-bolder" placeholder="Haryana"
+                                        for="inputState">State</label>
+                                    <input formControlName="state" id="inputState" class="form-control">
+                                    <div
+                                        *ngIf="addressForm.controls.state.invalid && (addressForm.controls.state.dirty || addressForm.controls.state.touched)">
+                                        <div *ngIf="addressForm.controls.state.errors.required">
+                                            <span class="errorClass"> State is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class=" font-weight-bolder" for="inputCountry">Country</label>
+                                    <input formControlName="country" id="inputCountry" class="form-control">
+                                    <div
+                                        *ngIf="addressForm.controls.country.invalid && (addressForm.controls.country.dirty || addressForm.controls.country.touched)">
+                                        <div *ngIf="addressForm.controls.country.errors.required">
+                                            <span class="errorClass"> Country is required</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class=" font-weight-bolder" for="inputZip">Zip</label>
+                                    <input formControlName="zip" class="form-control" id="inputZip" maxlength="6">
+                                    <mat-hint>{{addressForm.controls.zip.value?.length || 0}}/6</mat-hint>
+                                    <div
+                                        *ngIf="addressForm.controls.zip.invalid && (addressForm.controls.zip.dirty || addressForm.controls.zip.touched)">
+                                        <div *ngIf="addressForm.controls.zip.errors.required">
+                                            <span class="errorClass">Zip is required.</span>
+                                        </div>
+                                        <div *ngIf="addressForm.controls.zip.errors.pattern">
+                                            <span class="errorClass"> Invalid Zip Code</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div><button type="submit" [disabled]="!addressForm.valid"
+                                    class="btn btnimp btn-warning profileEditButtons profileEditButtonsSave">Save
+                                    Changes</button><button type="button"
+                                    class="btn mx-3 btnimp btn-secondary profileEditButtons profileEditButtonsCancel">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- account setting section End-->
+                </div>
+                <!-- end account setting   -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #addPassionModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <input placeholder="Your passion..." class="form-control" [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="addPassion($event)">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+    </div>
+</ng-template>
+
+
+
+<ng-template #addLinksModal let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="form-row">
+            <!--  -->
+            <div class="form-group col-md-4">
+                <label for="addingPortfolio">Title:</label>
+                <input placeholder="portfolio title" [(ngModel)]="linksForm.tempWebsiteTitle" type="text"
+                    class="form-control" id="addingPortfolio">
+                <p *ngIf="displayTitleError">
+                    Title should be less then 40 character
+                </p>
+            </div>
+            <!--  -->
+            <!--  -->
+            <div class="form-group col-md-8">
+                <label for="addingPortfolioLink">Link:</label>
+                <input placeholder="portfolio link" [(ngModel)]="linksForm.tempWebsiteValue" type="text"
+                    class="form-control" id="addingPortfolioLink">
+                <p *ngIf="displayLinkError">
+                    Link should be less then 40 character
+                </p>
+            </div>
+            <!--  -->
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="closeAddLinksModal()">Save</button>
+    </div>
+</ng-template>

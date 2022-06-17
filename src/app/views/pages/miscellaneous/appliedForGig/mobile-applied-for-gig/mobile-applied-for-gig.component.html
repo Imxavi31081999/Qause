@@ -1,0 +1,116 @@
+<div class="container p-0">
+  <div class="row">
+    <div class="col-lg-6 mx-auto p-0 m-0">
+      <div class="bg-main">
+        <div class="bg-icons">
+          <div class="content-box">
+            <i class="fas fa-arrow-left" (click)="goBack()"></i>
+
+            <i class="fas fa-share-alt"></i>
+          </div>
+        </div>
+        <div class="main-content m-radius">
+          <div class="head-profile-heading">
+            <div class="container">
+              <div class="modal-dialog w-100">
+                <div class="modal-content border-0">
+                  <div class="modal-header border-0">
+                    <!-- <h5 class="modal-title">Modal title</h5> -->
+
+                    <img
+                      src="../../../../../assets/images/93464516-happy-group-of-students-with-books.webp"
+                      class="mx-auto"
+                      height="68px"
+                      width="122px"
+                      alt=""
+                      srcset=""
+                    />
+                  </div>
+                  <div class="modal-body">
+                    <div class="close-card-s15">
+                      <h5>Hey {{userName?userName:"[Name]"}}</h5>
+
+                      <div>
+                        <p class="text-center close-card-p-s15 text-capitalize">
+                          {{ngoName?ngoName:"[NGO name]"}} <br />
+                          {{title?title:'title'}} & you volunteered to help!
+                        </p>
+                        <p class="text-center close-card-p-s15">
+                          We appreciate your effort to make a difference!
+                        </p>
+                      </div>
+
+                      <div class="text-center pb-5 border-bottom">
+                        <button
+                          type="button"
+                          class="btn btn-primary view-gig-btn"
+                          routerLink="/gig-listing"
+                        >
+                          View GIG
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-warning chat-ngo-btn"
+                          routerLink="/apps/chat"
+                        >
+                          Chat with NGO
+                        </button>
+                      </div>
+                      <div>
+                        <ul class="list-unstyled mt-5">
+                          <li class="media">
+                            <div>
+                              <i
+                                class="fas fa-phone-alt icon-c"
+                                style="font-size: 17px"
+                              ></i>
+                            </div>
+                            <div
+                              class="media-body border-bottom pb-2 ml-4 text-left"
+                            >
+                              <h5 class="mt-0 mb-1">Call NGO</h5>
+                              <p>
+                                You can directly connect with the respective
+                                person of the NGO to get more details about the
+                                task you’ve taken up.
+                              </p>
+                            </div>
+                          </li>
+                          <li class="media my-4">
+                            <div>
+                              <i
+                                class="far fa-life-ring icon-c"
+                                style="font-size: 17px"
+                              ></i>
+                            </div>
+                            <div class="media-body pb-2 ml-4 text-left">
+                              <h5 class="mt-0 mb-1">Qause Support</h5>
+                              <p>
+                                In case you get stuck or have any doubts, we are
+                                always here to help! Let us know!
+                              </p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer border-0">
+                    <div class="card p-3 bottom-card">
+                      <h5 class="bottom-h5">Happy Volunteering!</h5>
+
+                      <p>
+                        Complete this Project, Receive Feedback and Earn Qause
+                        Tokens! Give & Get!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

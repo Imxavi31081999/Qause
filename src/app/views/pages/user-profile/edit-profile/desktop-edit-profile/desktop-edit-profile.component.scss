@@ -1,0 +1,151 @@
+.btn-outs {
+    border: 1px solid #253dc0;
+    color: #253dc0;
+    box-sizing: border-box;
+    padding: 7px 30px;
+    border-radius: 10px;
+    font-weight: bolder;
+}
+
+.btn-outs:hover {
+    border: 1px solid #253dc0;
+    color: #253dc0;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.btn-outs:focus {
+    border: 1px solid #253dc0;
+    color: #253dc0;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.btn-outs-s {
+    border: 1px solid #eee;
+    color: rgb(124, 124, 124);
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.btn-outs-s:hover {
+    border: 1px solid #eee;
+    color: rgb(56, 56, 56);
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.btn-outs-s:focus {
+    border: 1px solid rgb(167, 167, 167);
+    color: #eee;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.btnimp {
+    padding: 9px 13px;
+    border-radius: 12px;
+    color: white;
+}
+
+.changeBorderColorOfInputWhenDuringError {
+    border: red 1px solid !important;
+}
+
+.form-control:disabled{
+    background-color: #e3e4e4;
+    cursor: not-allowed;
+}
+
+.errorClass {
+    color: red;
+}
+
+.form-control {
+    display: block;
+    // width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 7px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input-group-text {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0.375rem 3.75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #e9ecef00;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    border-right: 0px;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: #253dc0;
+    background-color: #f8f9fa;
+    border-color: #eee;
+    // border: unset;
+    font-weight: bolder;
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    // transition: all 0.5s ease-in-out;
+}
+
+.bl-0 {
+    border-left: 0px;
+}
+
+.profileEditButtons {
+    color: #fff;
+    background-color: #253dc0;
+    border: unset;
+    border-radius: 0.5rem;
+}
+
+.profileEditButtonsSave {
+    background-color: #f7a212;
+}
+
+.profileEditButtonsCancel {
+    background-color: #a5a5a5;
+}
+
+.form-control:focus {
+    border-color: #253dc0;
+}
+
+.example-chip-list {
+    width: 100%;
+}
+
+::ng-deep .blue-snackbar {
+    background: grey !important;
+    color: white !important;
+    .mat-simple-snackbar-action {
+        color: orange !important;
+    }
+}

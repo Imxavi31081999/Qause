@@ -1,0 +1,64 @@
+::ng-deep.p-dialog-mask{
+    z-index: 100 !important;
+}
+.inputField{
+    margin-top: 1rem;
+    border: 1px solid #5d5c5c;;
+    border-radius: 6px;
+    padding: 0.3rem 1rem;
+    width: 100%;
+    font-weight: 500;
+}
+.inputFieldWrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.payButton{
+    padding: 0.2rem 2rem;
+    background-color: #253dc0;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    width: 20%;
+    margin-top: 10px;
+}
+.payButton:disabled,
+.payButton[disabled]{
+    opacity: 0.5;
+}
+.donation{
+    text-align: center;
+}
+.anonymously{
+    text-align: center;
+}
+.donationInput{
+    width: 50%;
+    margin-top: 1rem;
+    font-size: 3rem;
+    font-weight: 500;
+    padding: 5px 20px;
+    border: 1px solid #5a5a5a;
+    border-radius: 10px;
+}
+::ng-deep.p-dialog .p-dialog-content {
+    background: #f8f8f8;
+}
+::ng-deep.p-dialog .p-dialog-header {
+    background: #f8f8f8;
+}
+.line{
+    border: 1px solid gray;
+    width: 85%;
+    position: relative;
+    bottom: 12px;
+    z-index: 0;
+}
+.Or{
+    z-index: 1;
+    background-color: #f8f8f8;
+}
+.text-decoration-underline{
+    text-decoration: underline;
+}

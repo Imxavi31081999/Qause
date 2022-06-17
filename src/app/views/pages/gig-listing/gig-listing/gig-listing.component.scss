@@ -1,0 +1,106 @@
+.card-img-overlay {
+    // position: absolute;
+    border-radius: 1rem !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: 0.5s ease;
+    background: rgba(0, 0, 0, 0.5);
+    button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.card-img-overlay:hover {
+    opacity: 2;
+    button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.card {
+    border-radius: 1rem !important;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #929292;
+    border-color: #8c8c8c;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #253dc0;
+    border-color: #253dc0;
+}
+
+.activeFilter {
+    color: #fff;
+    background-color: #253dc0;
+    border-color: #253dc0;
+}
+
+.noGig {
+    font-family: 'Muli';
+    font-weight: bold;
+    flex: 1;
+    text-align: center !important;
+}
+
+@media only screen and (max-width: 992px) {
+    .PaddingFormNavBar {
+        padding-top: 3rem !important;
+    }
+    form.searchDisplay#navForm {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 992px) and (min-width: 768px) {
+    /* Here are some changes*/
+    .flexClassForGigs {
+        flex-direction: column;
+        height: 10rem;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .makeDisplayNone {
+        display: none !important;
+    }
+    .PaddingFormNavBar {
+        padding-top: 0 !important;
+    }
+    .horizontal-scroll {
+        overflow-x: scroll;
+        display: flex;
+        height: 60px;
+    }
+    .change-width-btn {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 38%;
+        border-radius: 14px;
+        height: 43px;
+    }
+    .fontSizeMobile {
+        font-size: 1.5rem;
+    }
+    .flexDisplayMobileHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

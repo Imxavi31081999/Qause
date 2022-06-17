@@ -1,0 +1,793 @@
+<div class="container-fluid p-0" style="background-color: #253DC0;">
+    <div class="row p-0">
+        <!-- Author-->
+        <div class="col-lg-12 col-sm-12 p-0">
+
+            <div class="topNavigationIcons">
+                <i class="fas fa-arrow-left" (click)="goBack()"></i>
+            </div>
+
+
+
+
+            <div class="team-card-style-3 mx-auto">
+                <div class="team-thumb"><img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                        alt="Author Picture">
+
+                    <div class="row mt-2">
+
+                        <div class="  col">
+                            <h2 class="text-white text-center">Edit Profile</h2>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="team-edititemlist-bar-wrap">
+                    <div class="team-edititemlist-bar">
+                        <ul class="list-group list-group-flush w-100">
+                            <!-- <li class="list-group-item d-flex
+                                justify-content-between" 
+                                
+                                data-toggle="modal" data-target="#actionSheetContent"
+                                
+                                > Profile
+                                Info
+                                <i class="fas fa-chevron-right" style="color: #A5A5A5;"></i>
+                            </li> -->
+                            <li class="list-group-item d-flex
+                            justify-content-between" (click)="openPersonalInfoModal(personalInfoModal)"> Profile
+                                Info
+                                <i class="fas fa-chevron-right" style="color: #A5A5A5;"></i>
+                            </li>
+                            <li class="list-group-item d-flex
+                                justify-content-between" (click)="openBioModal(bioModal)">Bio <i class="fas
+                                    fa-chevron-right" style="color: #A5A5A5;"></i></li>
+                            <li class="list-group-item d-flex
+                                justify-content-between" (click)="openInterestModal(interestModal)">interest
+                                <i class="fas fa-chevron-right" style="color: #A5A5A5;"></i>
+                            </li>
+
+                            <li class="list-group-item d-flex
+                                justify-content-between" (click)="openLinksModal(linksModal)">Links <i
+                                    class="fas fa-chevron-right" style="color: #A5A5A5;"></i></li>
+                            <li class="list-group-item d-flex
+                                justify-content-between" (click)="openAccountSettingsModal(accountSettingsModal)">
+                                Account
+                                Settings <i class="fas fa-chevron-right" style="color: #A5A5A5;"></i></li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- start Personal info -->
+        <ng-template #personalInfoModal let-d="dismiss">
+
+
+            <div class="modal-header">
+                <div class="modal-title font-weight-bolder">
+                    <span (click)="closePersonalInfoModal()" class="mr-3"><i class="fas fa-arrow-left"></i>
+                    </span>Personal Info
+                </div>
+            </div>
+
+            <div class="modal-body">
+
+                <h4 class=" font-weight-bold mb-2">
+                    Personal Information
+                </h4>
+
+                <form (ngSubmit)="onPersonalInfoFormSubmit()" [formGroup]="personalInfoForm" novalidate>
+
+                    <div class="action-sheet-content">
+                        <div class="down">
+                            <div class="contentmarign">
+
+
+                                <h5 class="accordion1 mb-2" id="flush-headingThree">
+                                    Name
+                                </h5>
+
+                                <div class="input-group mb-3">
+                                    <input [formControl]="personalInfoForm.controls.name" type="text"
+                                        class="form-control formInput" placeholder="Name"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <span (click)="personalInfoControlToggler('name')"
+                                            [ngStyle]="{'color': true? 'black':''}"
+                                            class="input-group-text formEditIcon">
+                                            <div
+                                                *ngIf="personalInfoForm.controls.name.invalid && (personalInfoForm.controls.name.dirty || personalInfoForm.controls.name.touched)">
+                                                <div *ngIf="personalInfoForm.controls.name.errors.required">
+                                                    name is required.
+                                                </div>
+                                                <div *ngIf="personalInfoForm.controls.name.errors.minlength">
+                                                    name cannot be less then 2 character
+                                                </div>
+                                                <div *ngIf="personalInfoForm.controls.name.errors.maxlength">
+                                                    name cannot be more than 40 character
+                                                </div>
+                                            </div>
+                                            <i class="fas fa-pen"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="contentmarign">
+                                <h5 class="accordion1" id="flush-headingThree">
+                                    Date Of Birth
+                                </h5>
+                                <!-- <div class="Dob">
+                                                August, 04 2002 <i class="fas fa-pen"></i>
+                                            </div> -->
+                                <div class="input-group mb-3">
+                                    <input [formControl]="personalInfoForm.controls.birth" type="date"
+                                        class="form-control formInput" placeholder="Recipient's username"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div
+                                        *ngIf="personalInfoForm.controls.birth.invalid && (personalInfoForm.controls.birth.dirty || personalInfoForm.controls.birth.touched)">
+                                        <div *ngIf="personalInfoForm.controls.birth.errors.required">
+                                            Date of Birth is required.
+                                        </div>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span (click)="personalInfoControlToggler('birth')"
+                                            [ngStyle]="{'color': true? 'black':''}"
+                                            class="input-group-text formEditIcon">
+                                            <i class="fas fa-pen"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <!-- <input type="date" class="form-control" id="inputPassword4" placeholder="DOB"> -->
+
+                            </div>
+
+                            <div class="contentmarign">
+
+                                <h5 class="accordion1" id="flush-headingThree">
+                                    Gender
+                                </h5>
+
+                                <div class="input-group mb-3">
+                                    <select [formControl]="personalInfoForm.controls.gender" class="form-select "
+                                        style="border: none;    color: gray;">
+                                        <option disabled value=""> select gender</option>
+
+                                        <option value="Male"> Male</option>
+                                        <option value="Female"> Female</option>
+                                        <option value="Other"> Other</option>
+                                    </select>
+                                    <span (click)="personalInfoControlToggler('gender')"
+                                        [ngStyle]="{'color': true? 'black':''}" class="input-group-text formEditIcon">
+                                        <i class="fas fa-pen"></i>
+                                    </span>
+                                </div>
+
+
+
+                            </div>
+                            <div class="contentmarign">
+                                <h5 class="accordion1 mb-3" id="flush-headingThree">
+                                    Langauge
+                                </h5>
+                                <mat-chip-list #chipList aria-label="Fruit selection">
+                                    <div style="width: 100%; " class="mt-2">
+                                        <mat-chip *ngFor="let language of languageKnown" [selectable]="selectable"
+                                            [removable]="removable" (removed)="removeLanguage(language)">
+                                            {{language}}
+                                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                        </mat-chip>
+
+                                    </div>
+
+
+                                    <input #languageInput type="text" style="
+                                                    width: 100%;
+        color: black;
+        border-bottom: 1px solid #253cc0;
+        box-shadow: 2px 4px 6px #d1d1d1a6;
+                                                " class="form-control formInput"
+                                        [formControl]="personalInfoForm.controls.languageKnown" id="inputPassword4"
+                                        placeholder="..Add language and press enter! " [matChipInputFor]="chipList"
+                                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                        [matChipInputAddOnBlur]="addOnBlur"
+                                        (matChipInputTokenEnd)="addLanguage($event)">
+                                </mat-chip-list>
+
+                                <!-- <mat-form-field class="example-chip-list"> -->
+
+                                <!-- </mat-form-field> -->
+                            </div>
+
+
+
+
+                        </div>
+                        <div style="display: none;" class="d-grid mx-auto">
+                            <button type="button" class="btn btn-outs my-4
+                                        w-100 mx-auto">Add
+                                Langauge</button>
+
+                            <!-- <button class="btn btn-primary" type="button" style="background-color: white; color: #253cc0;">Add More Langauge </button> -->
+                        </div>
+
+
+
+                    </div>
+                    <div class="d-grid gap-2 mx-auto modalBottomButtons">
+                        <button type="submit" [disabled]="!personalInfoForm.valid" class="btn btn-warning
+                                        my-2 w-100">Save</button>
+                        <button type="button" class="btn btn-secondary
+                                        my-2 w-100" (click)="closePersonalInfoModal()">Cancel</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+
+
+        </ng-template>
+
+        <!-- end Personal info -->
+
+        <!-- start bio  -->
+
+        <ng-template #bioModal let-d="dismiss">
+
+
+            <div class="modal-header">
+                <div class="modal-title font-weight-bolder">
+                    <span (click)="closeBioModal()" class="mr-3"><i class="fas fa-arrow-left"></i>
+                    </span>Bio
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="action-sheet-content">
+                    <div class="row">
+                        <h4 class=" font-weight-bold mb-3">
+                            Biography
+                        </h4>
+                        <!-- <p>Lorem ipsum, dolor sit amet consectetur
+                            adipisicing elit. Aspernatur minima
+                            explicabo omnis ipsa consequuntur totam
+                            inventore eius saepe alias cumque hic
+                            et, atque rerum quod aut voluptate, illo ex
+                            assumenda.</p> -->
+
+                        <textarea [disabled]="isEditBio" [(ngModel)]="bio" class="form-control"
+                            id="exampleFormControlTextarea1" style="height: 100px;"
+                            placeholder="Your bio goes here"></textarea>
+
+                        <div class="col-6">
+                            <button type="button" (click)="editBio(false)" class="btn btn-outs
+                                my-4 w-100 mx-auto">Edit</button>
+                        </div>
+                        <div class="col-6">
+                            <button type="button" (click)="editBio(true)" class="btn
+                                btn-outline-secondary my-4 w-100
+                                mx-auto">Remove </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid gap-2 mx-auto modalBottomButtons">
+                    <button (click)="onSubmintBio()" type="button" class="btn btn-warning
+                        my-2 w-100">Save</button>
+                    <button type="button" class="btn btn-secondary
+                        my-2 w-100" (click)="closeBioModal()">Cancel</button>
+                </div>
+            </div>
+
+
+        </ng-template>
+        <!-- end bio  -->
+
+        <!-- start intrest  -->
+        <ng-template #interestModal let-d="dismiss">
+
+
+            <div class="modal-header">
+                <div class="modal-title font-weight-bolder">
+                    <span (click)="closeInterestModal()" class="mr-3"><i class="fas fa-arrow-left"></i>
+                    </span>Interest
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="action-sheet-content">
+                    <div class="row">
+
+                        <h4 class=" font-weight-bold mb-2">
+                            Interests
+                        </h4>
+
+                        <div class="col-12 my-3">
+                            <mat-chip-list #chipList aria-label="Fruit selection">
+                                <mat-chip *ngFor="let passion of passions" [selectable]="selectable"
+                                    [removable]="removable" (removed)="removePassion(passion)">
+                                    {{passion}}
+                                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                </mat-chip>
+                            </mat-chip-list>
+                        </div>
+
+
+                        <div class="col-12">
+                            <input style="
+                                width: 100%;
+    color: black;
+    border-bottom: 1px solid #253cc0;
+    box-shadow: 2px 4px 6px #d1d1d1a6;
+                            " placeholder="Add Your passion..." class="form-control formInput" type="text"
+                                autocomplete="off" [matChipInputFor]="chipList"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                                (matChipInputTokenEnd)="addPassion($event)">
+
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                </div>
+                <div class="d-grid gap-2 mx-auto modalBottomButtons">
+                    <button (click)="onSubmitPassion()" type="submit" class="btn btn-warning
+                        my-2 w-100">Save</button>
+                    <button type="button" class="btn btn-secondary
+                        my-2 w-100" (click)="closeInterestModal()">Cancel</button>
+                </div>
+
+            </div>
+
+
+        </ng-template>
+        <!-- end intrest  -->
+
+        <!-- start Links  -->
+        <ng-template #linksModal let-d="dismiss">
+
+
+            <div class="modal-header">
+                <div class="modal-title font-weight-bolder">
+                    <span (click)="closeLinksModal()" class="mr-3"><i class="fas fa-arrow-left"></i>
+                    </span>Links
+                </div>
+            </div>
+
+            <div class="modal-body">
+
+
+
+
+                <form>
+
+
+                    <h4 class=" font-weight-bold mb-2">
+                        Portfolio Links:-
+                    </h4>
+
+                    <div class="action-sheet-content">
+                        <div class="down">
+                            <div class="contentmarign">
+
+
+                                <ng-container *ngFor="let portfolio of linksForm.portfolioLinks">
+
+
+                                    <h5 class="accordion1 " id="flush-headingThree">
+                                        {{portfolio.title}}:
+                                    </h5>
+
+                                    <div class="input-group mb-2">
+                                        <input style="    background: white;" readonly [value]="portfolio.value"
+                                            type="text" class="form-control formInput" placeholder="www.xyz.com"
+                                            aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <span [ngStyle]="{'color': true? 'black':''}"
+                                                class="input-group-text formEditIcon">
+                                                <i class="fas fa-pen"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </ng-container>
+
+
+                                <div class="form-row">
+                                    <!--  -->
+                                    <div class="form-group col-4">
+                                        <label for="inputEmail4">Title:</label>
+                                        <input [ngModelOptions]="{standalone: true}" placeholder="portfolio title"
+                                            [(ngModel)]="linksForm.tempWebsiteTitle" type="text" class="form-control"
+                                            id="inputEmail4">
+                                    </div>
+                                    <!--  -->
+                                    <!--  -->
+                                    <div class="form-group col-8">
+                                        <label for="inputPassword4">Link:</label>
+                                        <input [ngModelOptions]="{standalone: true}" placeholder="portfolio link"
+                                            [(ngModel)]="linksForm.tempWebsiteValue" type="text" class="form-control"
+                                            id="inputPassword4">
+                                    </div>
+                                    <!--  -->
+                                </div>
+
+                                <!-- <input style="
+                                width: 100%;
+    color: black;
+    border-bottom: 1px solid #253cc0;
+    box-shadow: 2px 4px 6px #d1d1d1a6;
+                            " placeholder="Add more links..." class="form-control formInput" type="text"
+                                    autocomplete="off"> -->
+
+                                <button type="button" (click)="addNewLinks()" class="
+                                    btn btn-outs my-2 w-100 
+                                  ">Add Links</button>
+
+                                <!-- <div class="Dob">
+                                    Singh <i class="fas fa-pen"></i>
+                                </div> -->
+
+                                <!-- <input type="email" class="form-control" id="inputEmail4"
+                                    placeholder="xyz@gmail.com"> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class=" font-weight-bold my-2">
+                        Social Media Links:-
+                    </h4>
+
+                    <div class="action-sheet-content mb-1">
+                        <div class="down">
+                            <div class="contentmarign">
+
+
+                                <h5 class="accordion1 " id="flush-headingThree">
+                                    Instagram:
+                                </h5>
+
+                                <div class="input-group mb-2">
+                                    <input [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="linksForm.socialMediaLinks.instagram" type="text"
+                                        class="form-control formInput" placeholder="www.xyz.com"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <span [ngStyle]="{'color': true? 'black':''}"
+                                            class="input-group-text formEditIcon">
+                                            <i class="fas fa-pen"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <h5 class="accordion1 " id="flush-headingThree">
+                                    Twitter:
+                                </h5>
+
+                                <div class="input-group mb-2">
+                                    <input [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="linksForm.socialMediaLinks.twitter" type="text"
+                                        class="form-control formInput" placeholder="www.xyz.com"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <span [ngStyle]="{'color': true? 'black':''}"
+                                            class="input-group-text formEditIcon">
+                                            <i class="fas fa-pen"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <h5 class="accordion1 " id="flush-headingThree">
+                                    Google:
+                                </h5>
+
+                                <div class="input-group mb-2">
+                                    <input [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="linksForm.socialMediaLinks.google" type="text"
+                                        class="form-control formInput" placeholder="www.xyz.com"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <span style="color: black;" class="input-group-text formEditIcon">
+                                            <i class="fas fa-pen"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <h5 class="accordion1 " id="flush-headingThree">
+                                    Facebook:
+                                </h5>
+
+                                <div class="input-group mb-2">
+                                    <input [ngModelOptions]="{standalone: true}"
+                                        [(ngModel)]="linksForm.socialMediaLinks.facebook" type="text"
+                                        class="form-control formInput" placeholder="www.xyz.com"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <span style="color: black;" class="input-group-text formEditIcon">
+                                            <i class="fas fa-pen"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- <div class="Dob">
+                                    Singh <i class="fas fa-pen"></i>
+                                </div> -->
+
+                                <!-- <input type="email" class="form-control" id="inputEmail4"
+                                    placeholder="xyz@gmail.com"> -->
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="d-grid gap-2 mx-auto modalBottomButtons">
+                        <button type="button" (click)="onSubmitLinks()" class="btn btn-warning
+                            my-2 w-100">Save</button>
+                        <button type="button" class="btn btn-secondary
+                            my-2 w-100" (click)="closeLinksModal()">Cancel</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+
+        </ng-template>
+        <!-- end Links  -->
+
+
+        <!-- start Account Settings -->
+        <ng-template #accountSettingsModal let-d="dismiss">
+
+
+            <div class="modal-header">
+                <div class="modal-title font-weight-bolder">
+                    <span (click)="closeAccountSettingsModal()" class="mr-3"><i class="fas fa-arrow-left"></i>
+                    </span> Account setting
+                </div>
+            </div>
+
+            <div class="modal-body">
+
+
+
+
+                <form (ngSubmit)="onAccountFormSubmit()" [formGroup]="accountFormAndAddressForm" novalidate>
+
+
+
+
+
+
+                    <h4 class=" font-weight-bold mb-2">
+                        Account Settings:-
+                    </h4>
+
+                    <div class="action-sheet-content mb-1">
+                        <div class="down">
+                            <div class="contentmarign">
+
+
+                                <h5 class="accordion1 " id="flush-headingThree">
+                                    Email
+                                </h5>
+
+                                <div class="input-group mb-2">
+                                    <input [formControl]="accountFormAndAddressForm.controls.email" type="email"
+                                        class="form-control formInput" placeholder="your email.."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div
+                                        *ngIf="accountFormAndAddressForm.controls.email.invalid && (accountFormAndAddressForm.controls.email.dirty || accountFormAndAddressForm.controls.email.touched)">
+                                        <div *ngIf="accountFormAndAddressForm.controls.email.errors.pattern">
+                                            Enter a valid email
+                                        </div>
+                                        <div *ngIf="accountFormAndAddressForm.controls.email.errors.required">
+                                            Email is required.
+                                        </div>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span (click)="accountControlToggler('email')"
+                                            [ngStyle]="{'color': true? 'black':''}"
+                                            class="input-group-text formEditIcon">
+                                            <i class="fas fa-pen"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+
+
+                                <h5 class="accordion1 " id="flush-headingThree">
+                                    Phone Number
+                                </h5>
+
+                                <div class="input-group mb-2">
+                                    <input [formControl]="accountFormAndAddressForm.controls.mobile" type="tel"
+                                        class="form-control formInput" placeholder="+91 *********"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div
+                                        *ngIf="accountFormAndAddressForm.controls.mobile.invalid && (accountFormAndAddressForm.controls.mobile.dirty || accountFormAndAddressForm.controls.mobile.touched)">
+                                        <div *ngIf="accountFormAndAddressForm.controls.mobile.errors.pattern">
+                                            Enter a valid phone number
+                                        </div>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span (click)="accountControlToggler('mobile')"
+                                            [ngStyle]="{'color': true? 'black':''}"
+                                            class="input-group-text formEditIcon">
+                                            <i class="fas fa-pen"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+
+                                <h5 class="accordion1 " id="flush-headingThree">
+                                    Address
+                                </h5>
+
+                                <div class="input-group mb-2">
+                                    <input ngx-google-places-autocomplete
+                                        (onAddressChange)="handleAddressChange($event)" #mobSearch
+                                        formControlName="address" type="text" class="form-control formInput"
+                                        placeholder="Address" aria-label="Recipient's username"
+                                        aria-describedby="basic-addon2">
+
+                                    <div
+                                        *ngIf="accountFormAndAddressForm.controls.address.invalid && (accountFormAndAddressForm.controls.address.dirty || accountFormAndAddressForm.controls.address.touched)">
+                                        <div *ngIf="accountFormAndAddressForm.controls.address.errors.required">
+                                            <span class="errorClass"> Address is required</span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="input-group-append">
+                                        <span (click)="accountControlToggler('address')"
+                                            [ngStyle]="{'color': true? 'black':''}"
+                                            class="input-group-text formEditIcon">
+                                            <i class="fas fa-pen"></i>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <h5 class="accordion1 " id="flush-headingThree">
+                                    City
+                                </h5>
+
+                                <div class="input-group mb-2">
+                                    <input [formControl]="accountFormAndAddressForm.controls.city" type="tel"
+                                        class="form-control formInput" placeholder="city"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+
+                                    <div
+                                        *ngIf="accountFormAndAddressForm.controls.city.invalid && (accountFormAndAddressForm.controls.city.dirty || accountFormAndAddressForm.controls.city.touched)">
+                                        <div *ngIf="accountFormAndAddressForm.controls.city.errors.required">
+                                            <span class="errorClass"> city is required</span>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <h5 class="accordion1 " id="flush-headingThree">
+                                    state
+                                </h5>
+
+                                <div class="input-group mb-2">
+                                    <input [formControl]="accountFormAndAddressForm.controls.state" type="tel"
+                                        class="form-control formInput" placeholder="state"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+
+                                    <div
+                                        *ngIf="accountFormAndAddressForm.controls.state.invalid && (accountFormAndAddressForm.controls.state.dirty || accountFormAndAddressForm.controls.state.touched)">
+                                        <div *ngIf="accountFormAndAddressForm.controls.state.errors.required">
+                                            <span class="errorClass"> state is required</span>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <h5 class="accordion1 " id="flush-headingThree">
+                                    country
+                                </h5>
+
+                                <div class="input-group mb-2">
+                                    <input [formControl]="accountFormAndAddressForm.controls.country" type="tel"
+                                        class="form-control formInput" placeholder="country"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+
+                                    <div
+                                        *ngIf="accountFormAndAddressForm.controls.country.invalid && (accountFormAndAddressForm.controls.country.dirty || accountFormAndAddressForm.controls.country.touched)">
+                                        <div *ngIf="accountFormAndAddressForm.controls.country.errors.required">
+                                            <span class="errorClass"> country is required</span>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <h5 class="accordion1 " id="flush-headingThree">
+                                    zip
+                                </h5>
+
+                                <div class="input-group mb-2">
+                                    <input [formControl]="accountFormAndAddressForm.controls.zip" type="tel"
+                                        class="form-control formInput" placeholder="zip"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+
+                                    <div
+                                        *ngIf="accountFormAndAddressForm.controls.zip.invalid && (accountFormAndAddressForm.controls.zip.dirty || accountFormAndAddressForm.controls.zip.touched)">
+                                        <div *ngIf="accountFormAndAddressForm.controls.zip.errors.required">
+                                            <span class="errorClass"> zip is required</span>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="d-grid gap-2 mx-auto modalBottomButtons">
+                        <button type="submit" [disabled]="!accountFormAndAddressForm.valid" class="btn btn-warning
+                            my-2 w-100">Save</button>
+                        <button type="button" class="btn btn-secondary
+                            my-2 w-100" (click)="closeAccountSettingsModal()">Cancel</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+
+        </ng-template>
+        <!-- end Account Settings -->
+
+    </div>
+    <!-- * Content Action Sheet Account setting end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

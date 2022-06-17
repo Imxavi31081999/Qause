@@ -1,0 +1,238 @@
+$color_1: #fff;
+$color_2: black;
+$color_3: #253dc0;
+$color_4: #f7a212;
+$color_5: #FF0707;
+$color_6: #229207;
+$color_7: #1F7DF8;
+$color_8: #000;
+$color_9: #777777;
+$color_10: #efefef;
+$font-family_1: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+$background-color_1: #253dc0;
+$background-color_2: #E6E6E6;
+$background-color_3: #Efefef;
+$background-color_4: #e9ecef;
+$background-color_5: #28a745;
+$border-color_1: #005cbf;
+
+body {
+	p {
+		font-family: $font-family_1;
+	}
+}
+.row {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin-right: 0px;
+	margin-left: 0px;
+}
+.top-text {
+	text-align: center;
+	color: $color_1;
+	font-weight: 500;
+	font-size: 22px;
+	position: relative;
+	top: 53px;
+}
+.bg-main {
+	background-color: $background-color_1;
+	width: 100%;
+	height: auto;
+}
+.content-box {
+	display: flex;
+	justify-content: space-between;
+	padding: 25px 30px;
+	i {
+		color: $color_1;
+	}
+}
+.m-radius {
+	-webkit-border-top-left-radius: 24px;
+	-webkit-border-top-right-radius: 24px;
+	-moz-border-radius-topleft: 24px;
+	-moz-border-radius-topright: 24px;
+	border-top-left-radius: 24px;
+	border-top-right-radius: 24px;
+}
+.main-content {
+	background: #fff;
+	padding: 25px;
+}
+.accept {
+	border-radius: 6px;
+	display: flex;
+	justify-content: center;
+	background: #253DC0;
+	padding: 8px 40px;
+	border-radius: 6px;
+	display: flex;
+	justify-content: center;
+	background: #253DC0;
+	padding: 8px 40px;
+}
+.btn-primary {
+	&:not(:disabled) {
+		&:not(.disabled).active {
+			color: $color_1;
+			background: #253DC0;
+			border-color: $border-color_1;
+		}
+		&:not(.disabled) {
+			&:active {
+				color: $color_1;
+				background: #253DC0;
+				border-color: $border-color_1;
+			}
+		}
+	}
+}
+.show {
+	>.btn-primary.dropdown-toggle {
+		color: $color_1;
+		background: #253DC0;
+		border-color: $border-color_1;
+	}
+}
+.media-sec {
+	h5 {
+		font-family: $font-family_1;
+		font-weight: 600;
+		font-size: 95%;
+		color: $color_2;
+		margin-bottom: 0px;
+	}
+}
+.media-sec-p {
+	font-family: $font-family_1;
+	font-weight: 600;
+	font-size: 85%;
+	color: $color_3;
+}
+.med-p {
+	font-family: $font-family_1;
+	font-weight: 300;
+	font-size: 80%;
+	color: $color_3;
+}
+.icon-c {
+	color: $color_4;
+}
+.icon-r {
+	color: $color_5;
+}
+.icon-g {
+	color: $color_6;
+}
+.icon-b {
+	color: $color_7;
+}
+.top-btnlist {
+	border-radius: 0px;
+	font-size: 90%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: $color_8;
+	margin: 0px;
+	padding: 8px;
+	border: #00000017 solid 1px;
+	&:hover {
+		background-color: $background-color_2;
+	}
+}
+.nav-pills {
+	.nav-link.active {
+		color: $color_1;
+		background-color: $background-color_3;
+		color: $color_9;
+		padding: 10px 35px;
+		border-radius: 20px;
+	}
+	.show {
+		>.nav-link {
+			color: $color_1;
+			background-color: $background-color_3;
+			color: $color_9;
+			padding: 10px 35px;
+			border-radius: 20px;
+		}
+	}
+}
+.screen22tab {
+	li {
+		a {
+			color: $color_9;
+		}
+	}
+}
+.money-symobol-dropdown {
+	border: solid 1px #bdb9b9;
+	border-radius: unset;
+	padding: 3px 5px;
+	background: #efefef;
+	color: $color_10;
+	margin: auto 0px;
+	height: max-content;
+}
+.cardprogress {
+	display: -ms-flexbox;
+	display: flex;
+	height: 9px;
+	overflow: hidden;
+	line-height: 0;
+	font-size: .75rem;
+	background-color: $background-color_4;
+	border-radius: 0.2rem;
+}
+.cardprogress-bar {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-ms-flex-pack: center;
+	justify-content: center;
+	overflow: hidden;
+	color: $color_1;
+	text-align: center;
+	white-space: nowrap;
+	background-color: $background-color_5;
+	transition: width .6s ease;
+}
+.display-5 {
+	font-size: 35px;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+.rupeebtn {
+	font-weight: 600;
+	border: solid 1px #bdb9b9;
+	color: $color_8;
+	padding: 2px 4px;
+	font-size: 90%;
+}
+.fs {
+	font-size: 90%;
+}
+.fs-100 {
+	font-weight: 500;
+	font-size: 100%;
+}
+.close-card-p {
+	font-size: 14px;
+	color: $color_9;
+}
+.closebtn {
+	font-weight: 600;
+	border: solid 1px #bdb9b9;
+	color: $color_8;
+	padding: 7px 35px;
+}
+.close-card {
+	h5 {
+		color: $color_3;
+	}
+}

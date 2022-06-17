@@ -1,0 +1,141 @@
+<div class="container p-0 text-capitalize">
+    <div class="row">
+        <div class="col-lg-6 mx-auto p-0 m-0">
+            <div class="bg-main">
+                <div class="bg-icons">
+                    <div class="content-box">
+
+                        <i class="fas fa-arrow-left" (click)="goBack()"></i>
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                </div>
+                <div class="main-content m-radius">
+                    <div style=" margin-bottom: 4rem;" class="head-profile-heading">
+
+                        <div class="row">
+                            <div class="media media-sec-s17">
+                                <img class="rounded-circle mr-2 my-auto" height="40"
+                                    src="assets/images/gigAssets//trust.jpeg" alt="Generic placeholder image" />
+                                <div class="media-body">
+                                    <h5 class="m-0">{{gig.ngo.name}}</h5>
+                                    <p class="m-0">{{gig.ngo.state}},{{gig.ngo.country}}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="sec-18 mt-5">
+                                <h3 style="    font-size: 24px;
+                                font-weight: 900;
+                                color: black;">{{gig.title}}</h3>
+                                <p style="    font-weight: 600;" class="my-1 ">Monday,March 14, 2022</p>
+
+
+                            </div>
+                        </div>
+                        <div class="sec-18 mt-3">
+                            <div>
+                                <h6 class="m-0"> Submitted on </h6>
+                            </div>
+                            <div class="my-2">
+                                <p>{{getDate(gig.createdAt)}}</p>
+                            </div>
+                        </div>
+                        <div class="sec-18 mt-3">
+                            <div>
+                                <h6 class="m-0"> Rating </h6>
+
+                            </div>
+                            <div class="my-2" *ngIf="gig.feedback.isCompleted">
+                                <div class="inner-donate-card">
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <div class="fs-12" *ngIf="gig.feedback.ratting == 5">
+                                                <i class="fas icon-c fa-star" ></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                              </div>
+                                              <div class="fs-12" *ngIf="gig.feedback.ratting == 4.5">
+                                                <i class="fas icon-c fa-star" ></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                                <i class="fas icon-c fa-star-half-alt"></i>
+                                              </div>
+                                              <div class="fs-12" *ngIf="gig.feedback.ratting == 4">
+                                                <i class="fas icon-c fa-star" ></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                              </div>
+                                              <div class="fs-12" *ngIf="gig.feedback.ratting == 3.5">
+                                                <i class="fas icon-c fa-star" ></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                                <i class="fas icon-c fa-star-half-alt"></i>
+                                              </div>
+                                              <div class="fs-12" *ngIf="gig.feedback.ratting == 3">
+                                                <i class="fas icon-c fa-star" ></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                              </div>
+                                              <div class="fs-12" *ngIf="gig.feedback.ratting == 2.5">
+                                                <i class="fas icon-c fa-star" ></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                                <i class="fas icon-c fa-star-half-alt"></i>
+                                              </div>
+                                              <div class="fs-12" *ngIf="gig.feedback.ratting == 2">
+                                                <i class="fas icon-c fa-star" ></i>
+                                                <i class="fas icon-c fa-star"></i>
+                                              </div>
+                                              <div class="fs-12" *ngIf="gig.feedback.ratting == 1.5">
+                                                <i class="fas icon-c fa-star" ></i>
+                                                <i class="fas icon-c fa-star-half-alt"></i>
+                                              </div>
+                                              <div class="fs-12" *ngIf="gig.feedback.ratting == 1">
+                                                <i class="fas icon-c fa-star" ></i>
+                                              </div>
+                                              <div class="fs-12" *ngIf="gig.feedback.ratting == 0.5">
+                                                <i class="fas icon-c fa-star-half-alt"></i>
+                                              </div>
+                                        </div>
+                                        <div>
+                                           {{gig.feedback.ratting}} our of 5
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="my-2" *ngIf="!gig.feedback.isCompleted">Task Left Incomplete</div>
+
+                        </div>
+                        <div class="sec-18 mt-3">
+                            <div>
+                                <h6 class="m-0"> Feedback </h6>
+
+                            </div>
+                            <div class="my-2">
+                                <button type="button" class="btn btn-warn-sm btn-warning  btn-sm">Response Time</button>
+                                <button type="button"
+                                    class=" mr-2 btn btn-warn-sm btn-warning btn-sm">Dedication</button>
+                            </div>
+                        </div>
+                        <div class="sec-18 mt-3">
+                            <div>
+                                <h6 class="m-0"> Attachment </h6>
+
+                            </div>
+                            <div class="my-2">
+                                <img src="assets/images/gigAssets/cool-background.svg" class="img-fluid border" alt=""
+                                    srcset="">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

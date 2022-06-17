@@ -1,0 +1,481 @@
+<div class="container p-0">
+  <div class="row">
+    <div class="col-lg-6 mx-auto p-0 m-0">
+      <div class="bg-main">
+        <div class="bg-icons">
+          <div class="content-box">
+            <i class="fas fa-arrow-left" (click)="goBack()"></i>
+            <i class="fas fa-share-alt"></i>
+          </div>
+        </div>
+        <div class="main-content m-radius">
+          <div class="head-profile-heading" style="text-align: end">
+            <button mat-button [matMenuTriggerFor]="sort" class="sortButton">
+              Sort
+            </button>
+            <mat-menu #sort="matMenu">
+              <button mat-menu-item (click)="awating()">Awating</button>
+              <button mat-menu-item (click)="donation()">Donation</button>
+              <button mat-menu-item (click)="review()">Review</button>
+              <button mat-menu-item (click)="active()">Active</button>
+            </mat-menu>
+            <div class="row align-items-start justify-content-center">
+              <mat-tab-group
+              [(selectedIndex)]="selectedIndexBindingActive" #tabGroupActive
+                color="transparent"
+                class="m-1"
+              >
+                <mat-tab class="activeTab">
+                  <ng-template mat-tab-label>
+                    <span class="tab-heading">Active Tab</span>
+                  </ng-template>
+
+                  <hr />
+                  <div
+                    class="search-results text-capitalize"
+                    infiniteScroll
+                    [infiniteScrollDistance]="0"
+                    [infiniteScrollThrottle]="10"
+                    (scrolled)="onScrollActive()"
+                  >
+                    <div
+                      *ngFor="let gig of activeGig"
+                      class="card border-0 br-12 shadow w-90 mx-auto mb-1"
+                    >
+                      <div class="card-header border-0 bg-transparent">
+                        <div class="media media-sec-s17">
+                          <img
+                            class="rounded-circle mr-2 my-auto"
+                            height="40"
+                            [src]="
+                              gig.ngo.logo
+                                ? gig.ngo.logo
+                                : '../../../../../assets/images/gigAssets/trust.jpeg'
+                            "
+                            alt="Generic placeholder image"
+                          />
+                          <div class="media-body text-capitalize">
+                            <h5 class="m-0" style="font-weight: 700">
+                              {{ gig.ngo.name }}
+                            </h5>
+                            <p class="m-0" style="font-weight: 700">
+                              {{ gig.ngo.state }},{{ gig.ngo.country }}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="p-3">
+                        <img
+                          [src]="
+                            gig.logo
+                              ? gig.logo
+                              : '../../../../../assets/images/gigAssets/cool-background.svg'
+                          "
+                          class="card-img-top act-img"
+                          alt=" ..."
+                        />
+                      </div>
+
+                      <div class="card-body active-task-card">
+                        <h4>{{gig.title}}</h4>
+                        <div class="d-flex justify-content-between">
+                          <div class="left-sec">
+                            <div class="a">
+                              <i class="far fa-calendar-alt icon-c"></i>
+                              Accepted on
+                            </div>
+                            <div class="b">{{ acceptedOn(gig.createdAt) }}</div>
+                          </div>
+                          <div class="right-sec">
+                            <!-- <div class="c">
+                              <i
+                                class="far fa-clock icon-c"
+                                style="margin-left: -15px"
+                              ></i>
+                              8hours
+                            </div> -->
+                            <div class="c">
+                              <i
+                                class="far fa-clock icon-c"
+                                style="margin-left: -15px"
+                              ></i>
+                              {{ gig.category }}
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="d-flex justify-content-center mt-3"
+                          *ngIf="gig.type == 'singleVolunteering'"
+                        >
+                          <button
+                            type="button"
+                            class="btn btn-primary btn-sm accept shadow-sm text-white"
+                            style="z-index: 10"
+                            (click)="routerToActiveSingleVolunteeringGigDetails(gig._id)"
+                          >
+                            View Detail
+                          </button>
+                        </div>
+                        <div
+                          class="d-flex justify-content-center mt-3"
+                          *ngIf="gig.type == 'multipleVolunteering'"
+                        >
+                          <button
+                            type="button"
+                            class="btn btn-primary btn-sm accept shadow-sm text-white"
+                            style="z-index: 10"
+                            (click)="routerToActiveMultipleVolunteeringGigDetails(gig._id)"
+                          >
+                            View Detail
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row pb-5">
+                    <div class="col-md-12 p-5">
+                      <ngx-spinner
+                        bdOpacity="0.9"
+                        bdColor=""
+                        size="default"
+                        color="#f7a212"
+                        type="ball-pulse-sync"
+                        [fullScreen]="false"
+                      >
+                      </ngx-spinner>
+                    </div>
+                  </div>
+                </mat-tab>
+                <mat-tab class="historyTab">
+                  <ng-template mat-tab-label>
+                    <span class="tab-heading">History</span>
+                  </ng-template>
+                  <hr />
+                  <mat-tab-group
+                    color="transparent"
+                    class="m-2 temp"
+                    [(selectedIndex)]="selectedIndexBindingHistory" #tabGroupHistory
+                  >
+                    <mat-tab class="awatingTab">
+                      <ng-template mat-tab-label>
+                        <span class="tab-heading">Awating</span>
+                      </ng-template>
+                      <div
+                        class="search-results text-capitalize"
+                        infiniteScroll
+                        [infiniteScrollDistance]="0"
+                        [infiniteScrollThrottle]="10"
+                        (scrolled)="onScrollAwating()"
+                      >
+                        <div
+                          *ngFor="let gig of historyAwaitingGig"
+                          class="card border-0 br-12 shadow w-90 mx-auto mb-1 mt-4"
+                        >
+                          <div class="card-header border-0 bg-transparent">
+                            <div class="media media-sec-s17">
+                              <img
+                                class="rounded-circle mr-2 my-auto"
+                                height="40"
+                                [src]="
+                                  gig.ngo.logo
+                                    ? gig.ngo.logo
+                                    : '../../../../../assets/images/gigAssets/trust.jpeg'
+                                "
+                                alt="Generic placeholder image"
+                              />
+                              <div class="media-body">
+                                <h5 class="m-0" style="font-weight: 700">
+                                  {{ gig.ngo.name }}
+                                </h5>
+                                <p class="m-0" style="font-weight: 700">
+                                  {{ gig.ngo.state }},{{ gig.ngo.country }}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="p-3">
+                            <img
+                              [src]="
+                                gig.logo
+                                  ? gig.logo
+                                  : '../../../../../assets/images/gigAssets/cool-background.svg'
+                              "
+                              class="card-img-top act-img"
+                              alt=" ..."
+                            />
+                          </div>
+
+                          <div class="card-body active-task-card">
+                            <h4>{{gig.title}}</h4>
+                            <div class="d-flex justify-content-between">
+                              <div class="left-sec">
+                                <!-- <div class="a" >
+                                                          <i class="far fa-calendar-alt icon-c"></i> Accepted on
+                                                         </div>
+                                                         <div class="b">31-01-2022</div> -->
+                              </div>
+                              <div class="right-sec">
+                                <div class="c">
+                                  <i class="far fa-clock icon-c"></i> Completed
+                                </div>
+                                <div class="c">
+                                  <i class="far fa-clock icon-c"></i>
+                                  {{ gig.category }}
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                            class="d-flex justify-content-center mt-3"
+                            *ngIf="gig.type == 'singleVolunteering'"
+                          >
+                            <button
+                              type="button"
+                              class="btn btn-primary btn-sm accept shadow-sm text-white"
+                              style="z-index: 10"
+                              (click)="routerToSingleVolunteeringGigDetails(gig._id)"
+                            >
+                              View Detail
+                            </button>
+                          </div>
+                          <div
+                            class="d-flex justify-content-center mt-3"
+                            *ngIf="gig.type == 'multipleVolunteering'"
+                          >
+                            <button
+                              type="button"
+                              class="btn btn-primary btn-sm accept shadow-sm text-white"
+                              style="z-index: 10"
+                              (click)="routerToMultipleVolunteeringGigDetails(gig._id)"
+                            >
+                              View Detail
+                            </button>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row pb-5">
+                        <div class="col-md-12 p-5">
+                          <ngx-spinner
+                            bdOpacity="0.9"
+                            bdColor=""
+                            size="default"
+                            color="#f7a212"
+                            type="ball-pulse-sync"
+                            [fullScreen]="false"
+                          >
+                          </ngx-spinner>
+                        </div>
+                      </div>
+                    </mat-tab>
+
+                    <mat-tab class="reviewTab">
+                      <ng-template mat-tab-label>
+                        <span class="tab-heading">Review</span>
+                      </ng-template>
+                      <div
+                        class="search-results text-capitalize"
+                        infiniteScroll
+                        [infiniteScrollDistance]="0"
+                        [infiniteScrollThrottle]="10"
+                        (scrolled)="onScrollReview()"
+                      >
+                        <div
+                          *ngFor="let gig of historyReviewGig"
+                          class="card border-0 br-12 shadow w-90 mx-auto mb-1 mt-4"
+                        >
+                          <div
+                            class="card-header review-task-card my-2 border-0 bg-transparent"
+                          >
+                            <h4>{{gig.title}}</h4>
+                            <div class="media media-s17-text">
+                              <!-- <img class="rounded-circle mr-2 my-auto" height="40" src="img/trust.jpeg"
+                                                              alt="Generic placeholder image" /> -->
+                              <div class="media-body">
+                                <h5
+                                  class="mt-2"
+                                  style="font-weight: 700; font-size: 0.8rem"
+                                >
+                                {{ gig.ngo.name }}
+                                </h5>
+                                <p
+                                  class="m-0"
+                                  style="font-weight: 700; font-size: 0.8rem"
+                                >
+                                {{ gig.ngo.state }},{{ gig.ngo.country }}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div
+                            class="card-footer mt-5 bg-transparent border-0 ft-text" *ngIf="gig.feedback.rattedOn !== undefined"
+                          >
+                            {{acceptedOn(gig.feedback.rattedOn)}}
+                          </div>
+                          <div
+                          class="d-flex justify-content-center mt-3 mb-3"
+                        >
+                          <button
+                            type="button"
+                            class="btn btn-primary btn-sm accept shadow-sm text-white"
+                            style="z-index: 10"
+                            routerLink="/acitveAndHistory/review-details"
+                          >
+                            View Detail
+                          </button>
+                        </div>
+                        </div>
+                      </div>
+                      <div class="row pb-5">
+                        <div class="col-md-12 p-5">
+                          <ngx-spinner
+                            bdOpacity="0.9"
+                            bdColor=""
+                            size="default"
+                            color="#f7a212"
+                            type="ball-pulse-sync"
+                            [fullScreen]="false"
+                          >
+                          </ngx-spinner>
+                        </div>
+                      </div>
+                    </mat-tab>
+                    <mat-tab class="donationTab">
+                      <ng-template mat-tab-label>
+                        <span class="tab-heading">Donation</span>
+                      </ng-template>
+                      <div
+                        class="search-results text-capitalize"
+                        infiniteScroll
+                        [infiniteScrollDistance]="0"
+                        [infiniteScrollThrottle]="10"
+                        (scrolled)="onScrollDonation()"
+                      >
+                        <div
+                          *ngIf="
+                            historyDonationGig != undefined;
+                            else gigDetailsNotFound
+                          "
+                        >
+                          <div
+                            *ngIf="historyDonationGig.length == 0"
+                            class="w-90 mx-auto mb-1 mt-4"
+                          >
+                            
+                            <!-- <div class="text-center mx-auto">
+                              <button
+                                type="button"
+                                class="btn btn-warn btn-warning  donateButton"
+                              >
+                                Donate Now!
+                              </button>
+                            </div> -->
+                            <div class="card-header my-2 border-0 bg-transparent">
+                              <div class="media media-sec-s17">
+                                <img
+                                  class="rounded-circle mr-2 my-auto"
+                                  height="40"
+                                  src="../../../../../../assets/images/trust.jpeg"
+                                  alt="Generic placeholder image"
+                                />
+                                <div class="media-body" style="text-align: left;">
+                                  <h5 class="m-0" style="font-weight: 700">
+                                   Title
+                                  </h5>
+                                  <p class="m-0" style="font-weight: 700">
+                                    State, Country
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+  
+                            <div class="card-body history-task-card">
+                              <h6 style="margin-bottom: 2%; margin-left: -5px">
+                                Support the differently abled
+                              </h6>
+                              <br />
+                              <div class="inner-donate-card">
+                                Donated
+                                <h4>
+                                  <i class="fas fa-rupee-sign"></i> 10000.00
+                                  <i
+                                    class="fa fa-check-circle"
+                                    aria-hidden="true"
+                                  ></i>
+                                </h4>
+                                <p>26 April, 2022</p>
+                              </div>
+                            </div>
+                          </div>
+                        <div
+                          *ngFor="let gig of historyDonationGig; let i = index" [attr.data-index]="i"
+                          class="card border-0 br-12 shadow w-90 mx-auto mb-1 mt-4"
+                        >
+                          <div class="card-header my-2 border-0 bg-transparent">
+                            <div class="media media-sec-s17">
+                              <img
+                                class="rounded-circle mr-2 my-auto"
+                                height="40"
+                                src="../../../../../../assets/images/trust.jpeg"
+                                alt="Generic placeholder image"
+                                routerLink="/acitveAndHistory/donation-details"
+                              />
+                              <div class="media-body" style="text-align: left;">
+                                <h5 class="m-0" style="font-weight: 700" routerLink="/acitveAndHistory/donation-details">
+                                  {{ gig.ngo.name }}
+                                </h5>
+                                <p class="m-0" style="font-weight: 700" routerLink="/acitveAndHistory/donation-details">
+                                  {{ gig.ngo.state }},{{ gig.ngo.country }}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="card-body history-task-card">
+                            <h6 style="margin-bottom: 2%; margin-left: -5px" routerLink="/acitveAndHistory/donation-details">
+                              {{gig.title}}
+                            </h6>
+                            <br />
+                            <div class="inner-donate-card" routerLink="/acitveAndHistory/donation-details">
+                              Donated
+                              <h4 routerLink="/acitveAndHistory/donation-details">
+                                <i class="fas fa-rupee-sign"></i> {{totalDonation[i]}}
+                                <i
+                                  class="fa fa-check-circle"
+                                  aria-hidden="true"
+                                ></i>
+                              </h4>
+                              <p routerLink="/acitveAndHistory/donation-details">26 April, 2022</p>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                      </div>
+                      <div class="row pb-5">
+                        <div class="col-md-12 p-5">
+                          <ngx-spinner
+                            bdOpacity="0.9"
+                            bdColor=""
+                            size="default"
+                            color="#f7a212"
+                            type="ball-pulse-sync"
+                            [fullScreen]="false"
+                          >
+                          </ngx-spinner>
+                        </div>
+                      </div>
+                    </mat-tab>
+                  </mat-tab-group>
+                </mat-tab>
+              </mat-tab-group>
+              <!-- inpogress card  -->
+
+              <!-- end inpogress card  -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #gigDetailsNotFound> details not found </ng-template>

@@ -1,0 +1,222 @@
+<div class="container p-0" *ngIf="fundraisingData != undefined; else gigDetailsNotFound">
+  <div class="row">
+    <div class="col-lg-6 mx-auto p-0 m-0">
+      <div class="bg-main">
+        <div class="bg-icons">
+          <div class="content-box">
+            <i class="fas fa-arrow-left" (click)="goBack()"></i>
+            <i class="fas fa-share-alt"></i>
+          </div>
+        </div>
+        <div class="main-content m-radius">
+          <div class="head-profile-heading">
+
+
+            <div class="row">
+              <div class="media media-sec">
+                <img class="rounded-circle mr-3" height="60"
+                  [src]="fundraisingData.ngo.logo? fundraisingData.ngo.logo : '../../../../../../assets/images/trust.jpeg'"
+                  alt="Generic placeholder image" />
+                <div class="media-body">
+                  <h5 class="mt-0">{{fundraisingData.ngo.name}}</h5>
+                  <p class="media-sec-p m-0">{{fundraisingData.ngo.state}},{{fundraisingData.ngo.country}}</p>
+                  <p class="med-p">{{fundraisingData.questionsFormat.category}} </p>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="btn-group mx-auto" style="border-radius: 0px" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-outline-secondary top-btnlist"
+                  *ngIf="fundraisingData.ngo.files.A12">
+                  <i class="fas fa-file-pdf icon-r pr-1"></i> A12
+                </button>
+                <button type="button" class="btn btn-outline-secondary top-btnlist"
+                  *ngIf="fundraisingData.ngo.files.G80">
+                  <i class="fas fa-file-pdf icon-b pr-1"></i> G80
+                </button>
+                <button type="button" class="btn btn-outline-secondary top-btnlist"
+                  *ngIf="fundraisingData.ngo.files.fcra">
+                  <i class="fas fa-file-pdf icon-r pr-1"></i> fcra
+                </button>
+                <button type="button" class="btn btn-outline-secondary top-btnlist"
+                  *ngIf="fundraisingData.ngo.files.trust">
+                  <i class="fas fa-file-pdf icon-r pr-1"></i> trust
+                </button>
+
+                <button type="button" class="btn btn-outline-secondary top-btnlist"
+                  *ngIf="fundraisingData.ngo.files.trust">
+                  <i class="fas fa-shield-alt icon-g pr-1"></i> Verify
+                </button>
+              </div>
+            </div>
+            <!-- <div class="row mt-3">
+                                <div class="d-flex justify-content-around">
+                                    <div class="">
+                                        <i class="fa fa-clock pr-2 icon-c" aria-hidden="true"> </i>Times
+                                    </div>
+                                    <div class=" ml-5 pl-5">
+                                        <i class="fa fa-clock pr-2 "> </i>Education
+                                    </div>
+                                </div>
+                            </div> -->
+
+            <div style="    margin-bottom: 4rem;" class="row">
+              <div class="cont-box1 mt-5">
+                <h4 class="font-weight-bold">
+                  {{fundraisingData.questionsValues.fundraiserTitle}}
+                </h4>
+                <!-- inner section 1-->
+
+                <div class="cont-inner-box mt-5">
+                  <ul class="nav nav-pills screen22tab d-flex justify-content-around mb-5" id="pills-tab"
+                    role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                        aria-controls="pills-home" aria-selected="true">Desciption</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                        aria-controls="pills-profile" aria-selected="false">All Support</a>
+                    </li>
+                  </ul>
+
+
+                  <!-- tab content start -->
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                      aria-labelledby="pills-home-tab">
+                      <div class="cash-w-title">
+                        <div class="d-flex">
+
+                          <div class="d-flex py-auto">
+                            <h6>
+                              <span class="icon-g font-weight-bold display-5">&#8377;10349
+                              </span>
+                              raised out of 50000
+                            </h6>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="progress-section">
+                        <div class="progress cardprogress my-2">
+                          <div class="progress-bar cardprogress-bar" role="progressbar" style="width: 50%"
+                            aria-valuenow="50" aria-valuemin="0"></div>
+                        </div>
+                      </div>
+                      <div class="d-flex justify-content-between my-2">
+                        <div class="fs">1110 Suppoters</div>
+                        <div class="fs">10 Days Left</div>
+                      </div>
+                      <div class="d-flex justify-content-between my-4">
+                        <div style="    display: flex;
+                        justify-content: space-evenly;
+                        width: 100%;
+                    ">
+                          <button type="button" class="btn rupeebtn btn-outline-secondary">
+                            ₹ 100
+                          </button>
+                          <button type="button" class="btn rupeebtn btn-outline-secondary">
+                            ₹ 200
+                          </button>
+                          <button type="button" class="btn rupeebtn btn-outline-secondary">
+                            ₹ 500
+                          </button>
+
+                          <button type="button" class="btn rupeebtn btn-outline-secondary">
+                            Other Amount
+                          </button>
+                        </div>
+                        <!-- <div>
+                         
+                        </div> -->
+                      </div>
+                      <div>
+                        <button type="button" class="btn btn-primary btn-lg active btn-block">
+                          Donate Now!
+                        </button>
+                      </div>
+                      <div class="cont-inner-box mt-5">
+
+
+                        <div class="card mx-auto mt-4" style="width: 100%">
+                          <p-carousel showNavigators="false" [value]="imgSrc" [responsiveOptions]="responsiveOptions">
+                            <ng-template let-data pTemplate="item">
+                              <!-- Content to display -->
+                              <img [src]="data.src" class="card-img" alt="..." />
+
+                            </ng-template>
+                          </p-carousel>
+
+                          <!-- <img src="../../../../../../assets/images/cool-background.svg" class="card-img" alt="..." /> -->
+                        </div>
+
+                        <h6 class="font-weight-bold my-3">Description</h6>
+
+                        <p class="my-3">
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Quasi unde voluptatibus nam facilis error
+                          dolorum illum laborum veniam adipisci ullam, labore
+                          nemo quos provident voluptates nesciunt deserunt harum
+                          asperiores id.
+                        </p>
+                      </div>
+
+                      <!-- <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div> -->
+                    </div>
+
+                    <!-- transaction history start -->
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+                      <div class="row">
+                        <ul class="list-unstyled">
+                          <li class="media my-3">
+                            <img src="../../../../../../assets/images/user1.svg" class="mr-3 rounded-circle"
+                              alt="..." />
+                            <div class="media-body">
+                              <h6 class="mt-0 mb-1 font-weight-bold">
+                                Hitesh Rishi donated INR 2,100
+                              </h6>
+                              <small>15 February,2022</small>
+                            </div>
+                          </li>
+                          <li class="media my-3">
+                            <img src="../../../../../../assets/images/user1.svg" class="mr-3 rounded-circle"
+                              alt="..." />
+                            <div class="media-body">
+                              <h6 class="mt-0 mb-1 font-weight-bold">
+                                Hitesh Rishi donated INR 2,100
+                              </h6>
+                              <small>15 February,2022</small>
+                            </div>
+                          </li>
+                          <li class="media my-3">
+                            <img src="../../../../../../assets/images/user1.svg" class="mr-3 rounded-circle"
+                              alt="..." />
+                            <div class="media-body">
+                              <h6 class="mt-0 mb-1 font-weight-bold">
+                                Hitesh Rishi donated INR 2,100
+                              </h6>
+                              <small>15 February,2022</small>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #gigDetailsNotFound>
+  details not found
+</ng-template>

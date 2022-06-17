@@ -1,0 +1,161 @@
+<div>
+  <app-navbar></app-navbar>
+  <div class="head-img">
+    <img src="../../../../../../assets/images/loginimg.jpg" alt="" width="100%" height="100%"
+      style="object-fit: cover" />
+  </div>
+</div>
+<div class="col-lg-10 mx-auto">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="py-5">
+        <div class="row p-0">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent font-weight-bold">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Library</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Data</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+      <div class="row justify-content-center align-items-center">
+        <div class="card profile-card-1" style="width: 20rem;">
+          <img src="../../../../../../assets/images/trust.jpeg" class="rounded-pill mx-auto mt-4" height="60px"
+            width="60px" alt="" srcset="" />
+          <h5 class="text-center head-title px-lg-5 px-md-4 py-3" style="font-weight: px">
+            Life of life trust welfare associaation foundation
+          </h5>
+          <div class="mx-auto pb-5 mb-2">
+            <a href="" class="btn btn-dark"> View Profile </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- card icon with details  -->
+      <div class="row justify-content-center align-items-center">
+        <div class="card profile-card-1 text-center p-3" style="width: 20rem;">
+            <div class="logo__life">
+                <img src="assets/images/location.svg" alt="" />
+                <h4 style="color: #7e7e7e" class="small-heading my-3 font-size">
+                  Haryana
+                </h4>
+              </div>
+              <div class="logo__clock">
+                <img src="assets/images/clock.svg" class="" alt="" />
+                <h4 style="color: #7e7e7e" class="small-heading my-3 font-size">
+                  8hours
+                </h4>
+              </div>
+              <div class="logo__education">
+                <img src="assets/images/Education.svg" alt="" />
+                <h4 style="color: #7e7e7e" class="small-heading my-3 font-size">
+                  Social Media
+                </h4>
+              </div>
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+            <p class="button-style-yellow bottom-left-tag">Social Media</p>
+            <p class="button-style-yellow bottom-left-tag">Graphic Desgin</p>
+          </div>
+    </div>
+    </div>
+    <div class="col-lg-8 offset-lg-1">
+      <div class="col-lg-12 p-0 m-0">
+        <div class="main-content">
+          <div class="head-profile-heading">
+            <div class="row">
+              <div class="sec-18 mt-5">
+                <h3 class="main-head">
+                  Help feed of poor patients who wait outside hospitals
+                </h3>
+                <p class="mt-2 mb-5">Monday,March 14, 2022</p>
+              </div>
+            </div>
+
+            <mat-tab-group color="transparent">
+              <mat-tab class="firstTab">
+                <ng-template mat-tab-label>
+                  <span class="tab-heading">Description</span>
+                </ng-template>
+                <hr />
+
+                <div>
+                  <div class="d-flex justify-content-between align-items-baseline mt-5 w-60">
+                    <div class="d-flex flex-row">
+                      <p class="font-size-raised font-weight-bold">
+                        ₹10,121 &nbsp;
+                      </p>
+                      <span class="font-size-raised"> raised out of </span>
+                    </div>
+                    <p style="font-size: 1rem; font-weight: 400">50,000</p>
+                  </div>
+                  <div class="progress cardprogress my-2 w-60">
+                    <div class="progress-bar cardprogress-bar" role="progressbar" [ngStyle]="{ width: '78%' }"
+                      aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+
+                  <div>
+                    <!-- add a slider with respect to payment -->
+                  </div>
+                  <div class="d-flex justify-content-between align-items-baseline w-60">
+                    <p>147 supporters</p>
+                    <p>10 days left</p>
+                  </div>
+                </div>
+                <div class="mt-5">
+                  <button class="mr-2 font-weight-bold pay-button">₹100</button>
+                  <button class="mr-2 font-weight-bold pay-button">₹200</button>
+                  <button class="mr-2 font-weight-bold pay-button">₹500</button>
+                </div>
+                <div class="mt-5">
+                  <button class="font-weight-bold donate-now" (click)="OpenDonationModal()">
+                    Donate Now!
+                  </button>
+                </div>
+                <div class="mt-5">
+                  <h5>Attachments</h5>
+
+                  <div style="width: 50%; background: #f1f1f2">
+                    <p-carousel showNavigators="false" [value]="imgSrc" [responsiveOptions]="responsiveOptions">
+                      <ng-template let-data pTemplate="item">
+                        <!-- Content to display -->
+                        <img [src]="data.src" class="card-img" alt="..." />
+                      </ng-template>
+                    </p-carousel>
+                  </div>
+                </div>
+              </mat-tab>
+
+              <mat-tab class="secondTab">
+                <ng-template mat-tab-label>
+                  <span class="tab-heading">All Supporters</span>
+                </ng-template>
+                <hr />
+
+                <div *ngFor="let transaction of transactions" class="mt-5">
+                  <div class="d-flex">
+                    <img src="../../../../../../assets/images/svg/profile.svg" alt="" />
+                    <div class="ml-3 text-muted">
+                      <p>
+                        {{ transaction.donorName }} donated INR
+                        {{ transaction.amount }}
+                      </p>
+                      <p>{{ getTransactionDate(transaction.createdAt) }}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <p-paginator [rows]="limit" [totalRecords]="totalRecords" (onPageChange)="paginate($event)">
+                </p-paginator>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<app-donation> </app-donation>

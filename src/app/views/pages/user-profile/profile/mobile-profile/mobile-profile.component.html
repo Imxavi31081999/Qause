@@ -1,0 +1,565 @@
+<div class="mobileview d-lg-none d-md-block">
+  <div class="container-fluid p-0" style="background-color: #253dc0">
+    <div class="row p-0">
+      <!-- Author-->
+      <div class="col-lg-12 col-sm-12 p-0">
+        <div class="topNavigationIcons">
+          <i class="fas fa-arrow-left" (click)="goBack()"></i>
+          <i class="fas fa-share-alt"></i>
+        </div>
+
+        <div
+          style="padding-top: 2rem; height: auto"
+          class="team-card-style-3 mx-auto"
+        >
+          <div class="team-thumb">
+            <img
+              src="https://bootdey.com/img/Content/avatar/avatar7.png"
+              alt="Author Picture"
+            />
+          </div>
+          <div class="teamNameAndDob">
+            <h4 class="team-name">
+              {{userName}}
+              <i class="fas fa-check-circle"></i>
+            </h4>
+            <div class="DOB d-inline-flex text-white">
+              <div>
+                {{birthDate?birthDate: "Monday, October 18, 2021"}}
+              </div>
+            </div>
+          </div>
+
+          <div class="row py-3 mb-2 text-white">
+            <div class="col-4">
+              <div class="xp-social-profile-media">
+                <h5 class="font-weight-bold">45</h5>
+                <p class="mb-0">Posts</p>
+              </div>
+            </div>
+
+            <div class="col-4 border-left border-right">
+              <div class="xp-social-profile-followers">
+                <h5 class="font-weight-bolder">278k</h5>
+                <p class="mb-0">Fans</p>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="xp-social-profile-following">
+                <h5 class="font-weight-bolder">552</h5>
+                <p class="mb-0">Likes</p>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col-md-8 mx-auto">
+              <button
+                style="border-radius: 10px"
+                type="button"
+                routerLink="/user-profile/edit-profile"
+                class="btn btn-outline-light"
+              >
+                <span class="font-weight-bolder"> Edit Profile</span>
+              </button>
+            </div>
+          </div>
+          <div style="bottom: unset" class="team-social-bar-wrap">
+            <div class="team-social-bar">
+              <a class="social-btn sb-style-1 sb-twitter" href="#">
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a class="social-btn sb-style-1 sb-github" href="#">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a class="social-btn sb-style-1 sb-stackoverflow" href="#">
+                <i
+                  style="color: white; font-weight: bold"
+                  class="fab fa-instagram"
+                ></i>
+              </a>
+              <a class="social-btn sb-style-1 sb-skype" href="#">
+                <i class="fab fa-google"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Experience section -->
+  <div style="background-color: #253cc0">
+    <mat-tab-group
+      style="
+        background-color: #ffffff;
+        overflow: hidden;
+        border-radius: 50px 50px 0 0;
+      "
+      class="pt-5"
+      mat-align-tabs="center"
+    >
+      <mat-tab label="Experience ">
+        <div class="container">
+          <div class="row mt-3 mb-3">
+            <div class="col-6">
+              <h5>Activity Task</h5>
+            </div>
+            <div class="col-6 text-right">
+              <a routerLink="/acitveAndHistory">View All</a>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <!-- <section style="padding: unset;" class="slider"> -->
+            <ng-container *ngIf="gigs && gigs.length > 0; else gigsNotFound">
+              <div
+                      *ngFor="let gig of gigs"
+                      class="card border-0 br-12 shadow w-90 mx-auto mb-1"
+                    >
+                      <div class="card-header border-0 bg-transparent">
+                        <div class="media media-sec-s17">
+                          <img
+                            class="rounded-circle mr-2 my-auto"
+                            height="40"
+                            [src]="
+                              gig.ngo.logo
+                                ? gig.ngo.logo
+                                : '../../../../../assets/images/gigAssets/trust.jpeg'
+                            "
+                            alt="Generic placeholder image"
+                          />
+                          <div class="media-body text-capitalize">
+                            <h5 class="m-0" style="font-weight: 700">
+                              {{ gig.ngo.name }}
+                            </h5>
+                            <p class="m-0" style="font-weight: 700">
+                              {{ gig.ngo.state }},{{ gig.ngo.country }}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="p-3">
+                        <img
+                          [src]="
+                            gig.logo
+                              ? gig.logo
+                              : '../../../../../assets/images/gigAssets/cool-background.svg'
+                          "
+                          class="card-img-top act-img"
+                          alt=" ..."
+                        />
+                      </div>
+
+                      <div class="card-body active-task-card">
+                        <h4>Title</h4>
+                        <div class="d-flex justify-content-between">
+                          <div class="left-sec">
+                            <div class="a">
+                              <i class="far fa-calendar-alt icon-c"></i>
+                              Accepted on
+                            </div>
+                            <div class="b">{{ acceptedOn(gig.createdAt) }}</div>
+                          </div>
+                          <div class="right-sec">
+                            <!-- <div class="c">
+                              <i
+                                class="far fa-clock icon-c"
+                                style="margin-left: -15px"
+                              ></i>
+                              8hours
+                            </div> -->
+                            <div class="c text-capitalize">
+                              <i
+                                class="far fa-clock icon-c"
+                                style="margin-left: -15px"
+                              ></i>
+                              {{ gig.category }}
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="d-flex justify-content-center mt-3"
+                          *ngIf="gig.type == 'singleVolunteering'"
+                        >
+                          <button
+                            type="button"
+                            class="btn btn-primary btn-sm accept shadow-sm text-white"
+                            style="z-index: 10"
+                            routerLink="/active-gig-details/singleVolunter"
+                          >
+                            View Detail
+                          </button>
+                        </div>
+                        <div
+                          class="d-flex justify-content-center mt-3"
+                          *ngIf="gig.type == 'multipleVolunteering'"
+                        >
+                          <button
+                            type="button"
+                            class="btn btn-primary btn-sm accept shadow-sm text-white"
+                            style="z-index: 10"
+                            routerLink="/active-gig-details/multipleVolunter"
+                          >
+                            View Detail
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+            </ng-container>
+            <!-- <div class="card text-white  mx-1">
+                       <div class="card-body" style="position: relative;">
+                          <img class="card-img" src="../../../../../assets/images/profilePage/profileImg.png"
+                             style="border-radius: 14px; height: 220px; width: 182px;" alt="Card image">
+                          <div class="card-img-overlay">
+                             <div class="" style="margin-top: 60px;">
+                                <h5 class="card-title">Design a Facebook Banner</h5>
+                                <p class="card-text m-0"> <i class="fas fa-map-marker-alt"></i> New Delhi,
+                                   India</p>
+                                <p class="card-text m-0"> <i class="fas fa-shapes"></i> Education</p>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="card text-white  mx-1">
+                       <div class="card-body" style="position: relative;">
+                          <img class="card-img" src="../../../../../assets/images/profilePage/profileImg.png"
+                             style="border-radius: 14px; height: 220px; width: 182px;" alt="Card image">
+                          <div class="card-img-overlay">
+                             <div class="" style="margin-top: 60px;">
+                                <h5 class="card-title">Design a Facebook Banner</h5>
+                                <p class="card-text m-0"> <i class="fas fa-map-marker-alt"></i> New Delhi,
+                                   India</p>
+                                <p class="card-text m-0"> <i class="fas fa-shapes"></i> Education</p>
+                             </div>
+                          </div>
+                       </div>
+                    </div> -->
+            <!-- </section> -->
+          </div>
+          <div class="row experienceSection my-3">
+            <div class="profiletimeline w-100">
+              <h5 class="mx-4">Experience Timeline</h5>
+              <ul class="mb-3" style="padding: unset; margin: unset">
+                <li style="background-color: #f5f5f5">
+                  <span> </span>
+
+                  <div>
+                    <div style="color: #a5a5a5" class="title">
+                      16 August 2021
+                    </div>
+                    <div style="color: #292929; font-weight: 500" class="info">
+                      Lorem ipsum dolor sit amet.
+                    </div>
+
+                    <div class="">
+                      <i class="fas fa-star" style="color: #f7a212"></i>
+                      <span style="color: #a5a5a5"> 4.5 </span>
+                    </div>
+                  </div>
+                </li>
+                <li style="background-color: #f5f5f5">
+                  <div>
+                    <div style="color: #a5a5a5" class="title">
+                      16 August 2021
+                    </div>
+                    <div style="color: #292929; font-weight: 500" class="info">
+                      Lorem ipsum dolor sit amet.
+                    </div>
+
+                    <div class="">
+                      <i class="fas fa-star" style="color: #f7a212"></i>
+                      <span style="color: #a5a5a5"> 4.5 </span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+
+              <p class="text-center mb-3">More</p>
+            </div>
+          </div>
+          <div class="row bg-white">
+            <div class="review col-md-12 my-3">
+              <h5 class="mx-3">Experience Timeline</h5>
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <div style="width: unset; height: unset" class="card mb-4">
+                    <h5 class="card-title">Reviews</h5>
+                    <div style="padding: 0 2rem" class="card-body">
+                      <div class="star">
+                        <i class="fas fa-star" style="color: darkgray"></i>
+                        <i class="fas fa-star" style="color: darkgray"></i>
+                        <i class="fas fa-star" style="color: darkgray"></i>
+                        <i class="fas fa-star" style="color: darkgray"></i>
+                        <i class="fas fa-star" style="color: darkgray"></i>
+                      </div>
+                      <div
+                        style="
+                          margin-top: 1rem;
+                          font-style: italic;
+                          color: #585858;
+                        "
+                        class="comment"
+                      >
+                        <p>
+                          " Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. At nobis neque assumenda totam dolorum alias
+                          labore quia, voluptas exercitationem, consequuntur
+                          beatae laudantium, corporis sed culpa dolor omnis
+                          voluptates iusto sapiente! "
+                        </p>
+                      </div>
+                      <div
+                        class="name"
+                        style="display: flex; bottom: 0rem; margin: 1rem 0"
+                      >
+                        <p>By:-</p>
+                        <p
+                          style="
+                            color: #253cc0;
+                            margin: 0px 10px;
+                            font-weight: bold;
+                            font-size: 1rem;
+                            font-style: italic;
+                          "
+                        >
+                          Abhishek
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div style="width: unset; height: unset" class="card mb-4">
+                    <h5 class="card-title">Reviews</h5>
+                    <div style="padding: 0 2rem" class="card-body">
+                      <div class="star">
+                        <i class="fas fa-star" style="color: darkgray"></i>
+                        <i class="fas fa-star" style="color: darkgray"></i>
+                        <i class="fas fa-star" style="color: darkgray"></i>
+                        <i class="fas fa-star" style="color: darkgray"></i>
+                        <i class="fas fa-star" style="color: darkgray"></i>
+                      </div>
+                      <div
+                        style="
+                          margin: 1rem 0;
+                          font-style: italic;
+                          color: #585858;
+                        "
+                        class="comment"
+                      >
+                        <p>
+                          " Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. At nobis neque assumenda totam dolorum alias
+                          labore quia, voluptas exercitationem, consequuntur
+                          beatae laudantium, corporis sed culpa dolor omnis
+                          voluptates iusto sapiente! "
+                        </p>
+                      </div>
+                      <div
+                        class="name"
+                        style="display: flex; bottom: 0rem; margin: 1rem 0"
+                      >
+                        <p>By:-</p>
+                        <p
+                          style="
+                            color: #253cc0;
+                            margin: 0px 10px;
+                            font-weight: bold;
+                            font-size: 1rem;
+                            font-style: italic;
+                          "
+                        >
+                          Abhishek
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="About">
+        <!-- about section content -->
+        <div class="container">
+          <div class="row">
+            <div class="col-12 my-3">
+              <h5>Bio</h5>
+              <p class="grayText">
+                {{
+                  userDetails ? userDetails.bio : " Lorem ipsum dolor sit amet "
+                }}
+              </p>
+            </div>
+
+            <div class="col-12 my-3">
+              <h5 style="margin-bottom: 1rem">Intrest</h5>
+
+              <div *ngIf="userPassion">
+                <!-- {{ userPassion | json }} -->
+
+                <ng-container
+                  *ngIf="
+                    userPassion && userPassion.length > 0;
+                    else userPassionTemplateMobile
+                  "
+                >
+                  <p class="grayText">
+                    <button
+                      *ngFor="let passion of userPassion; index as i"
+                      type="button"
+                      class="btn btn-outline m-1"
+                    >
+                      {{ passion }}
+                    </button>
+
+                    <!-- {{userLanguages | json}} -->
+                  </p>
+                </ng-container>
+
+                <ng-template #userPassionTemplateMobile>
+                  <button type="button" class="btn btn-outline m-1">
+                    Content Writing
+                  </button>
+                  <button type="button" class="btn btn-outline m-1">
+                    Content Writing
+                  </button>
+                  <button type="button" class="btn btn-outline m-1">
+                    Content Writing
+                  </button>
+                  <button type="button" class="btn btn-outline m-1">
+                    Content Writing
+                  </button>
+                  <button type="button" class="btn btn-outline m-1">
+                    Content Writing
+                  </button>
+                  <button type="button" class="btn btn-outline m-1">
+                    Content Writing
+                  </button>
+                  <button type="button" class="btn btn-outline m-1">
+                    Content Writing
+                  </button>
+                </ng-template>
+              </div>
+              <!-- <button type="button" class="btn btn-outline m-1">Content Writing</button>
+                       <button type="button" class="btn btn-outline m-1">Content Writing</button>
+                       <button type="button" class="btn btn-outline m-1">Content Writing</button>
+                       <button type="button" class="btn btn-outline m-1">Content Writing</button> -->
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 my-3">
+              <h5>Gender</h5>
+              <p class="grayText">
+                {{ userDetails ? userDetails.gender : " Male " }}
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 my-3">
+              <h5>Language</h5>
+
+              <ng-container
+                *ngIf="
+                  userLanguages && userLanguages.length > 0;
+                  else userLanguagesTemplateMobile
+                "
+              >
+                <p class="grayText">
+                  <span *ngFor="let languages of userLanguages; index as i">
+                    {{ languages }}
+                    {{ i + 1 == userLanguages.length ? "" : "," }}
+                  </span>
+                  <!-- {{userLanguages | json}} -->
+                </p>
+              </ng-container>
+
+              <ng-template #userLanguagesTemplateMobile>
+                <p class="grayText">Hindi, English</p>
+              </ng-template>
+              <!-- <p class="grayText">English</p> -->
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 my-3">
+              <h5>Location</h5>
+              <p class="grayText">Nagar, Delhi</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 my-3">
+              <h5>Portfolio links</h5>
+
+              <ng-container
+                *ngIf="
+                  this.userPortfolio && this.userPortfolio.length > 0;
+                  else dummyPortfolio
+                "
+              >
+                <div class="grayText">
+                  <p *ngFor="let data of userPortfolio">
+                    <span>{{ data.title }} :</span>
+                    <a [href]="data.link">{{ data.link }}</a>
+                  </p>
+                </div>
+              </ng-container>
+
+              <ng-template #dummyPortfolio>
+                <div class="grayText">
+                  <p>
+                    <span>Website :</span>
+                    <a href="https://dribbble.com/">https://dribbble.com/</a>
+                  </p>
+                  <p>
+                    <span>Behence :</span>
+                    <a href="https://dribbble.com/">https://dribbble.com/</a>
+                  </p>
+                  <p>
+                    <span>Dribbble :</span>
+                    <a href="https://dribbble.com/">https://dribbble.com/</a>
+                  </p>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 my-3">
+              <h5>Points</h5>
+              <p class="grayText">1543 Points</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 my-3">
+              <h5>Member Since</h5>
+              <p class="grayText">july 18, 2021</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <button
+              type="button"
+              style="width: 100%; height: auto"
+              class="btn btn-dark btn-lg mx-1 my-3"
+            >
+              <p>Enrolled into Volunteer Experience Program</p>
+            </button>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+  <!-- review section -->
+</div>
+
+<ng-template #gigsNotFound>
+  <h1 class="noGig">No gigs found</h1>
+</ng-template>

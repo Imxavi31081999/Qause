@@ -1,0 +1,86 @@
+<h2 style="
+    color: blue;
+    font-size: 23px;
+    font-weight: 800 !important;
+    margin-left: 57px;
+    margin-bottom: 30px;
+  ">
+  Fundraising
+</h2>
+<div *ngIf="fundraisingGigs.length > 0; else gignotfound">
+  <p-carousel (onPage)="activeNeedPage($event, 'No')" [value]="fundraisingGigs" [responsiveOptions]="responsiveOptions">
+    <ng-template let-gig pTemplate="item">
+      <div class="card bg-yellow br-30 m-2">
+        <img [src]="
+            gig.logo
+              ? gig.logo
+              : '../../../../../assets/images/gigAssets/cool-background.svg'
+          " class="card-img-top p-2 br-30" alt="..." />
+        <span class="badge badge-primary time-upper-span">
+          <i class="fas fa-clock"></i> {{ getDays(gig.createdAt) }} days
+          left</span>
+
+        <!-- {{queryData}} {{category}} -->
+
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h6 class="text-capitalize">
+                {{
+                gig.questionValues.fundraiserTitle
+                ? gig.questionValues.fundraiserTitle
+                : "Title"
+                }}
+              </h6>
+            </div>
+            <div>
+              <i _ngcontent-nhq-c248="" class="fas fa-share-alt"></i>
+            </div>
+          </div>
+          <div class="media media-sec-card mt-1 w-100">
+            <img class="rounded-circle mr-2" height="50" [src]="
+                gig.ngo.logo
+                  ? gig.ngo.logo
+                  : '../../../../../assets/images/gigAssets/trust.jpeg'
+              " alt="Generic placeholder image" />
+            <div class="media-body my-auto">
+              <h6 class="m-0" (click)="viewFoundraisingGig(gig)" role="button" class="text-capitalize">
+                {{ gig.ngo.name ? gig.ngo.name : "Gig Name" }}
+              </h6>
+              <p class="m-0 text-capitalize">
+                {{
+                gig.ngo.state
+                ? gig.ngo.state + " " + gig.ngo.country
+                : "State, Country"
+                }}
+              </p>
+            </div>
+          </div>
+          <div class="money-title my-3">
+            <div>
+              <span><sup> ₹</sup> {{ removeLastTwoDigits(gig.donates) }}</span> raised out of
+              {{ gig.questionValues.amount }}
+              <!-- need to know the ammount  -->
+            </div>
+            <div class="progress cardprogress my-2">
+              <div class="progress-bar cardprogress-bar" role="progressbar"
+                [ngStyle]="{ width: getPercentageOfDonation(gig) }" aria-valuenow="25" aria-valuemin="0"
+                aria-valuemax="100"></div>
+            </div>
+            <div class="text-center fs-xs">{{ gig.supporters }} Suppoters</div>
+            <!-- need to know Suppoters -->
+          </div>
+
+          <div class="d-flex justify-content-center mt-3">
+            <button type="button" class="btn btn-primary btn-sm accept shadow-sm text-white"
+              (click)="OpenDonationModal(gig._id, gig.ngo._id)">
+              Donate now
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+  <app-donation> </app-donation>
+</div>
+<ng-template #gignotfound> No gigs </ng-template>

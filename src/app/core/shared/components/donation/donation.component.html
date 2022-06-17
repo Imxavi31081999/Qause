@@ -1,0 +1,172 @@
+<!-- credit popup -->
+<div>
+  <p-dialog
+    [draggable]="false"
+    [(visible)]="donationModal"
+    [style]="{ width: '500px' }"
+    [baseZIndex]="100"
+  >
+    <div class="credit-header d-flex flex-column justify-content-between">
+      <form
+        class="d-flex flex-column"
+        [formGroup]="donationWithLogin"
+        (ngSubmit)="makeNewPayment()"
+        class="ml-4 mb-4 mr-4 mt-0"
+      >
+        <!-- <h1 class="donation">Donation</h1> -->
+        <div class="inputFieldWrap">
+          <input
+            type="text"
+            name=""
+            placeholder="Your name"
+            class="inputField mb-0 mt-0"
+            formControlName="nameControl"
+          />
+          <div
+            class="ml-3"
+            style="font-size: 13px"
+            *ngIf="
+              nameControl.invalid && (nameControl.dirty || nameControl.touched)
+            "
+          >
+            <div *ngIf="nameControl.errors.required">
+              <span class="errorClass">Name is required</span>
+            </div>
+          </div>
+          <input
+            type="email"
+            name=""
+            id=""
+            placeholder=" Your Email (Ex. abcd@gmail.com)"
+            [value]="email"
+            formControlName="emailControl"
+            class="inputField mb-0"
+          />
+          <div
+            class="ml-3"
+            style="font-size: 13px"
+            *ngIf="
+              emailControl.invalid &&
+              (emailControl.dirty || emailControl.touched)
+            "
+          >
+            <div *ngIf="emailControl.errors.required">
+              <span class="errorClass">Email is required</span>
+            </div>
+            <div *ngIf="emailControl.errors.pattern">
+              <span class="errorClass">Enter a valid email</span>
+            </div>
+          </div>
+          <input
+            name=""
+            id=""
+            [value]="mobile"
+            class="inputField mb-0"
+            formControlName="phoneControl"
+            placeholder=" Your Mobile Number (Ex. 91-112233455)"
+            maxlength="13"
+          />
+          <div
+            class="ml-3"
+            style="font-size: 13px"
+            *ngIf="
+              phoneControl.invalid &&
+              (phoneControl.dirty || phoneControl.touched)
+            "
+          >
+            <div *ngIf="phoneControl.errors.required">
+              <span class="errorClass">Phone Number is required</span>
+            </div>
+            <div *ngIf="phoneControl.errors.pattern">
+              <span class="errorClass"
+                >Enter a valid phone number (Ex. 91-112233455)</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-row justify-content-between">
+          <div class="anonymously">
+            <input
+              type="checkbox"
+              name=""
+              id=""
+              formControlName="anonymouslyControl"
+              class="mt-3"
+            />
+            <label>Donation anonymously</label>
+          </div>
+          <div class="guest" *ngIf="!authService.isLoggedIn()">
+            <input
+              type="checkbox"
+              name=""
+              id=""
+              formControlName="guestControl"
+              class="mt-3"
+            />
+            <label>Continue as Guest</label>
+          </div>
+        </div>
+        <div *ngIf="!authService.isLoggedIn()" class="m-3">
+          <p class="text-center">
+            Already have a account?
+            <span
+              role="button"
+              (click)="openLoginPopup()"
+              class="font-weight-bold text-decoration-underline"
+              >Login
+            </span>
+            or
+            <span
+              class="text-decoration-underline font-weight-bold"
+              role="button"
+              (click)="openRegisterPopup()"
+            >
+              Register</span
+            >
+          </p>
+        </div>
+        <div class="modal-inner">
+          <div
+            class="inc-des d-flex justify-content-center spinner align-items-center"
+          >
+            <div class="d-flex flex-column align-items-center">
+              <h3>Donation Amount</h3>
+              <input
+                type="tel"
+                class="donationInput"
+                formControlName="donationInput"
+                minlength="3"
+              />
+              <div
+                class="ml-3"
+                style="font-size: 13px"
+                *ngIf="
+                  donationInput.invalid &&
+                  (donationInput.dirty || donationInput.touched)
+                "
+              >
+                <div *ngIf="donationInput.errors.pattern">
+                  <span class="errorClass">Enter a valid amount</span>
+                </div>
+                <div *ngIf="donationInput.errors.minlength">
+                  <span class="errorClass">Minimum Ammount 100 </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="mt-2 mb-2 pt-2 pb-2 d-flex flex-column align-items-center"
+          >
+            <!-- <div><span> Note: </span> {{ gigId }}</div> -->
+            <button
+              [disabled]="!donationWithLogin.valid"
+              class="add-creditbtn payButton"
+            >
+              Pay
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </p-dialog>
+</div>

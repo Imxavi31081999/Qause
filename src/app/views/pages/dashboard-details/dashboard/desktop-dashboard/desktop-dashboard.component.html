@@ -1,0 +1,106 @@
+<app-navbar (searchEvent)="searchQuery($event)">
+
+</app-navbar>
+
+<div class="container PaddingFormNavBar">
+
+    <!-- row -->
+
+    <div class="my-5 ">
+        <h2 class=" text-center mb-3 fontSizeMobile">Volunteer Online</h2>
+        <div class="text-center">
+            <button class="btn btn-secondary  m-1 change-width-btn" [ngClass]="{'activeFilter': arrCategory.includes(tag.title)}" id="tags" *ngFor="let tag of tags" type="submit" (click)='filterGig(tag.title)'>{{tag.title}}</button>
+            <button (click)="doFilter()" class="btn btn-primary m-1 mr-0" id="tags" type="submit"> <i
+                    data-feather="filter" appFeatherIcon></i>
+                filter</button>
+        </div>
+
+
+    </div>
+
+    <div class="search-results" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="10" (scrolled)="onScroll()">
+
+        <div class="row mt-4">
+
+
+            <ng-container *ngIf="gigs && gigs.length>0 else gigsNotFound">
+
+                <div *ngFor="let gig of gigs" class="col-md-4 mb-3 mt-2">
+                    <div class="card roundedcard">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <img class="img-xs rounded-circle" [src]="gig.url? gig.url:'https://via.placeholder.com/37x37'" alt="">
+                                    <div style="cursor: pointer;" (click)="viewGig(gig)" class="ml-2">
+                                        <p>{{ gig.ngo.name? gig.ngo.name: 'Light of Life Trust'}}</p>
+                                        <p class="tx-11 text-muted">
+                                            {{ gig.ngo.country? gig.ngo.country + ' ' + gig.ngo.state : "Haryana, Inida" }}
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card bg-dark text-white">
+                                <img class="card-img" [src]="gig.url? gig.url:'https://via.placeholder.com/513x342'" style="border-radius:1rem;" alt="Card image">
+                                <div class="card-img-overlay">
+                                    <button class="btn btn-warning" (click)="viewGig(gig)" id="tags"><a> View Gig</a> <i
+                                            class="fa fa-arrow-right" aria-hidden="true"></i></button>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-footer">
+                            <h5 class="mb-3" style="font-weight: 900;">
+                                {{ gig.title? gig.title: 'Title Goes Here'}}
+                            </h5>
+                            <div class="d-flex flexClassForGigs justify-content-around post-actions">
+                                <a href="javascript:;" class="d-flex align-items-center text-muted mr-4">
+                                    <span><img src="assets/images/progress-bar.svg" alt="" srcset=""></span>
+                                    <p class="d-none d-md-block ml-2">{{ gig.volunteerNeeded? gig.volunteerApplied + ' of ' + gig.volunteerNeeded + ' volunteer' : '0 of 00 volunteer'}}</p>
+                                </a>
+                                <a href="javascript:;" class="d-flex align-items-right text-muted ">
+
+                                    <ul style="list-style: none;">
+                                        <li>
+                                            <p class="d-none d-md-block d-inline"> <img src="assets/images/ri_time-line.svg" alt="" srcset=""> 8hours
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <p class="d-none d-md-block d-inline"> <img src="assets/images/ri_time-line.svg" alt="" srcset=""> Education
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </ng-container>
+
+
+
+            <ng-template #gigsNotFound>
+                <h1 class="noGig">
+                    No gigs found
+                </h1>
+            </ng-template>
+        </div>
+    </div>
+
+</div>
+<!-- <a class="btn btn-primary" href="" (click)="false" role="button">Link</a> -->
+
+
+
+
+<!-- spinner -->
+<div class="row pb-5">
+    <div class="col-md-12 p-5">
+        <ngx-spinner bdOpacity=0.9 bdColor="" size="default" color="#f7a212" type="ball-pulse-sync" [fullScreen]="false">
+        </ngx-spinner>
+    </div>
+</div>

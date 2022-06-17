@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "study.manish.qause",
+      "sha256_cert_fingerprints": [
+        "F5:AF:28:6F:A4:E0:2B:F5:15:3A:68:D6:18:47:16:CC:33:E4:4A:07:4F:3D:57:CE:C0:7D:A7:63:88:88:46:CC"
+      ]
+    }
+  }
+]

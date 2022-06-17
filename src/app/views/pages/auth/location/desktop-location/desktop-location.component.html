@@ -1,0 +1,154 @@
+<div>
+    <div class="row">
+      <div class="col-md-6">
+        <div>
+          <div class="card bg-prime">
+            <div class="p-4">
+              <div class="d-flex justify-content-center">
+                <div class="">
+                  <img
+                    src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                    alt="user"
+                    class="rounded-circle"
+                    width="100"
+                  />
+                </div>
+              </div>
+              <div class="text-center">
+                <h5 class="fw-600">
+                  Neha Sharma
+                  <i class="fa fa-check-circle" aria-hidden="true"></i>
+                </h5>
+                <p>April 18 2022</p>
+              </div>
+              <div class="row my-4">
+                <div class="col border-right text-center">
+                  <h4 class="fw-600">14</h4>
+                  <h6 class="">Engaged</h6>
+                </div>
+                <div class="col border-right text-center">
+                  <h4 class="fw-600">14</h4>
+                  <h6 class="">Followers</h6>
+                </div>
+                <div class="col text-center">
+                  <h4 class="fw-600">14</h4>
+                  <h6 class="">Following</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card sec-card">
+            <div class="d-flex justify-content-around">
+              <i class="fab fa-facebook-f"></i>
+              <i class="fab fa-twitter"></i>
+              <i class="fab fa-instagram"></i>
+              <i class="fab fa-google"></i>
+            </div>
+          </div>
+          <div style="background-color: #eaf1f8" class="p-md-5">
+            <div class="row">
+              <ul class="list-unstyled">
+                <li class="media my-3">
+                  <i class="fas fa-check mediaimg fa-2x px-2"></i>
+                  <div class="media-body">
+                    <h6 class="mt-0 mb-1 font-weight-bold">
+                      Hitesh Rishi donated INR 2,100
+                    </h6>
+                    <small>15 February,2022 </small>
+                  </div>
+                </li>
+                <hr />
+                <li class="media my-3">
+                  <i class="fas fa-check mediaimg fa-2x px-2"></i>
+                  <div class="media-body">
+                    <h6 class="mt-0 mb-1 font-weight-bold">
+                      Hitesh Rishi donated INR 2,100
+                    </h6>
+                    <small>15 February,2022 </small>
+                  </div>
+                </li>
+                <hr />
+                <li class="media my-3">
+                  <i class="fas fa-check mediaimg fa-2x px-2"></i>
+                  <div class="media-body">
+                    <h6 class="mt-0 mb-1 font-weight-bold">
+                      Hitesh Rishi donated INR 2,100
+                    </h6>
+                    <small>15 February,2022 </small>
+                  </div>
+                </li>
+                <hr />
+                <li class="text-center">
+                  <h6 class="fw-600 ptext">
+                    There is always something to gain when you give!
+                  </h6>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="head-profile-heading">
+          <div class="card border-0">
+            <img
+              src="../../../../assets/images/location1.png"
+              class="card-img"
+              alt="..."
+            />
+          </div>
+
+          <div class="row">
+            <div class="box-seciton-head w-100">
+              <h4 class="mb-3 ml-5">Share Your <span>Location</span></h4>
+              <div class="input-group mb-3">
+                <br />
+                <input
+                  [(ngModel)]="addressField"
+                  (input)="detectInput($event)"
+                  ngx-google-places-autocomplete
+                  (onAddressChange)="handleAddressChange($event)"
+                  #addressSearch
+                  (change)="changeHandler()"
+                  style="height: auto"
+                  type="text"
+                  class="form-control ml-5"
+                  id="address"
+                  placeholder="Select Location"
+                  aria-label="Recipient's username"
+                  aria-describedby="button-addon2"
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-outline-secondary"
+                    style="border-radius: 0px"
+                    type="button"
+                    id="button-addon2"
+                  >
+                    <i
+                      style="color: #f79e09; font-size: 2rem"
+                      class="fas fa-location"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+              <span *ngIf="isaddress" class="errorClass"
+                >Location is required</span
+              >
+              <div class="row">
+                <button
+                  type="button"
+                  [disabled]="disableaddress"
+                  (click)="next()"
+                  class="btn btn-primary btn-lg mx-auto manClass next"
+                >
+                  Next
+                </button>
+              </div>
+              <!-- <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg"> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

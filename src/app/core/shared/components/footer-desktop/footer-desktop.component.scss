@@ -1,0 +1,150 @@
+.footer-wrap {
+  padding-top: 100px;
+  position: relative;
+}
+.footer-contact-info {
+  background: #253dc0;
+  overflow: hidden;
+  max-width: 1600px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  margin-top: 53px;
+  border-top-right-radius: 40px;
+  padding: 40px 30px;
+  margin-right: 288px;
+}
+.footer-contact-info h5 {
+  // font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.footer-left-info a {
+  // font-size: 1.6rem;
+  color: #f7a212;
+  font-weight: 500;
+}
+.subscribe-btn {
+  width: 234px;
+  height: 1px;
+  border: 0;
+  border-bottom: 1px solid #6e7ed5;
+  position: relative;
+  transition: 0.3s linear all;
+}
+.subscribe-btn:focus {
+  border-color: red;
+}
+.subscribe-btn::after {
+  content: "\f178";
+  font-family: FontAwesome;
+  position: absolute;
+  right: 0;
+  top: -32px;
+  color: #fff;
+  font-size: 22px;
+}
+.footer-social-icon ul li {
+  display: inline-block;
+}
+.footer-social-icon ul li a {
+  // background: url(/assets/images/homepage/footer-social-icon.png) no-repeat;
+  width: 24px;
+  height: 20px;
+  background-position: top;
+  transition: 0.3s linear all;
+  display: block;
+}
+.footer-social-icon ul li:hover a {
+  background-position: bottom;
+}
+.footer-social-icon ul li:nth-child(1) a {
+  background-position: 0 0;
+}
+.footer-social-icon ul li:nth-child(1):hover a {
+  background-position: 0px -21px;
+}
+.footer-social-icon ul li:nth-child(2) a {
+  background-position: -48px 0;
+  margin: 0 20px;
+}
+.footer-social-icon ul li:nth-child(2):hover a {
+  background-position: -48px -21px;
+}
+
+.footer-social-icon ul li:nth-child(3) a {
+  background-position: -97px 0;
+}
+.footer-social-icon ul li:nth-child(3):hover a {
+  background-position: -97px -21px;
+}
+.footer-quick-links ul li {
+  display: block;
+}
+.footer-quick-links ul li a {
+  color: #ed9d23;
+  // font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.footer-quick-links ul li:nth-last-child(1) a {
+  margin-bottom: 0;
+}
+.footer-right-side-para {
+  max-width: 255px;
+}
+.footer-right-side-para p {
+  // font-size: 1.4rem;
+  font-weight: 300;
+  color: #fff;
+  line-height: 20px;
+}
+
+.copyright span {
+  margin-top: 100px;
+  display: block;
+  color: #6d84ff;
+  // font-size: 1.6rem;
+  font-weight: bold;
+}
+@media (max-width: 991px) {
+  .footer-wrap {
+    padding-top: 50px;
+  }
+}
+@media (max-width: 776px) {
+  .footer-left-info h5 {
+    margin-bottom: 10px;
+  }
+  .footer-left-info a {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  .footer-quick-links ul li a {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  .footer-contact-info {
+    padding: 30px 15px;
+    margin-right: 0;
+    position: relative;
+    margin-top: -60px;
+  }
+  .subscribe-btn {
+    width: 170px;
+  }
+  .mobile-footer-bottom {
+    margin-top: 30px;
+  }
+  .copyright span {
+    margin-top: 30px;
+  }
+  .footer-wrap {
+    padding-top: 30px;
+  }
+}

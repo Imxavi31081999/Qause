@@ -1,0 +1,202 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 p-0">
+            <div class="bg-main">
+                <div class="bg-icons">
+                    <div class="content-box">
+                        <i class=" fas fa-arrow-left" (click)="goBack()"></i>
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                </div>
+                <div class="main-content m-radius">
+                    <div class="head-profile-heading">
+                        <div class="row" style="display: unset;">
+                            <div class="head-pro-inner">
+                                <div class="media media-sec-s21 pb-2">
+                                    <img class="rounded-circle mr-2" height="50" src="assets/images/gigAssets/trust.jpeg" alt="Generic placeholder image" />
+                                    <div class="media-body">
+                                        <h5 class="m-0">Light of life Trust</h5>
+                                        <p class="m-0">Haryana,India</p>
+                                    </div>
+                                </div>
+
+                                <div class="btn-group icon-grp" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn-grp btn-sec"><i
+                                            class="fas fa-phone-alt"></i></button>
+                                    <button type="button" class="btn-grp btn-sec"><i
+                                            class="fas fa-chart-area"></i></button>
+                                            <input type="file" multiple class="file-input " hidden (change)="onFileSelected($event)" #fileUpload>
+                                    <button type="button" class="btn-grp btn-sec" *ngIf="!(filesLength >= 1 && filesLength < 4) || filesLength == 0  || fileSizeError" (click)="fileUpload.click()"><i
+                                            class="fas fa-upload pr-2"></i>Select File</button>
+                                            <button type="button" class="btn-grp btn-sec" (click)="  docSubmit() " *ngIf="(filesLength >= 1 && filesLength < 4) && !fileSizeError"><i
+                                                class="fas fa-upload pr-2"></i>Upload</button>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <div>
+                                      <h5 class="mt-2">{{ firstFileName }}</h5>
+                                    </div>
+                                    <div>
+                                      <h5 class="mt-1">{{ secondFileName }}</h5>
+                                    </div>
+                                    <div>
+                                      <h5 class="mt-1">{{ thirdFileName }}</h5>
+                                    </div>
+                                    <div>
+                                      <h5 class="mt-2" *ngIf="moreThenThreeFiles">
+                                        Select Maximum of 3 files
+                                      </h5>
+                                    </div>
+                                    <div>
+                                      <h5 class="mt-1" *ngIf="fileSizeError">
+                                        File Should Be less then 1 MB
+                                      </h5>
+                                    </div>
+                                    <div>
+                                      <h5>{{ this.uploadProgress }}</h5>
+                                    </div>
+                                  </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="card shadow-sm  my-5 w-100 contact-card text-white">
+                                <small><i class="fa fa-check-circle pl-2" aria-hidden="true"></i> Contact
+                                    Person</small>
+                                <div class="card-inner">
+                                    <div><i class="fa fa-user" aria-hidden="true"></i> Nitesh Xyz </div>
+                                    <div><i class="fas fa-phone-alt"></i> +91 8900989004</div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="cont-box1 mt-5">
+                                <h3 style="font-weight: 900;">#Title (Single Volunteer)</h3>
+                                <!-- inner section 1-->
+                                <div class="cont-inner-box mt-5">
+                                    <h6 style="font-weight: 900;">Gig Description</h6>
+                                    <p>
+                                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora culpa dolores eligendi rem, nulla fuga minus voluptas alias ut eveniet itaque enim harum facere dolore, quaerat, reiciendis molestiae pariatur vero.
+                                    </p>
+                                </div>
+                                <div class="cont-inner-box mt-5">
+                                    <h6 style="font-weight: 900;"><i class="fas fa-paperclip pr-3"></i>Attachment</h6>
+                                    <div class="card mx-auto mt-4" style="width: 100%">
+                                        <img src="assets/images/gigAssets/cool-background.svg" class="card-img" alt="..." />
+                                    </div>
+                                </div>
+                                <div class="cont-inner-box mt-5 ">
+                                    <h6 style="font-weight: 900;">Links</h6>
+                                    <ul class="list-group list-group-flush p-0 m-0 border-0">
+                                        <li class="list-group-item border-0 p-1 py-2"> <i class="fas fa-globe icon-c"></i> Cras justo odio</li>
+                                        <li class="list-group-item border-0 p-1 py-2"> <i class="fab fa-facebook-f icon-c"></i> Dapibus ac facilisis in</li>
+                                        <li class="list-group-item border-0 p-1 py-2"> <i class="fab fa-instagram icon-c"></i> Morbi leo risus</li>
+                                    </ul>
+                                </div>
+                                <div class="cont-inner-box ">
+                                    <ul class="list-group list-group-flush border-top p-0">
+                                        <li class="list-group-item px-0">
+                                            <div class="py-3">
+                                                <h6 style="font-weight: 900;">Subject</h6>
+                                                <span>English</span> &nbsp;
+                                                <span>Hindi</span>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="py-3">
+                                                <h6 style="font-weight: 900;">Tagline</h6>
+                                                <p> Feed The World You Want to Live in </p>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+
+                                            <div class="py-3">
+                                                <h6 style="font-weight: 900;">Day and Time Preference</h6>
+                                                <div class="d-flex justify-content-between py-2">
+                                                    <div><i class="fas fa-calendar-check icon-c"></i> Mon & Fri
+                                                    </div>
+                                                    <div><i class="fas fa-clock icon-c"></i> 09am - 11am IST</div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="py-3">
+                                                <h6 style="font-weight: 900;">Language Preference</h6>
+                                                <span>English</span>
+
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="py-3">
+                                                <h6 style="font-weight: 900;">Ref Links</h6>
+                                                <div style="display: flex;
+                                                flex-direction: column;" class="py-2">
+                                                    <a href="https://www.qause.com/about" style="color: #253dc0;">https://www.qause.com/about</a>
+                                                    <a href="https://www.qause.com/about" style="color: #253dc0;">https://www.qause.com/about</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="py-3">
+                                                <h6 style="font-weight: 900;">Report Type</h6>
+                                                Annual
+
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="py-3">
+                                                <h6 style="font-weight: 900;">Venue(Location)</h6>
+                                                <div>
+                                                    <i class="fas fa-map-marker-alt icon-c"></i> Gurugram (Haryana)
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="py-3">
+                                                <h6 style="font-weight: 900;">Blog Topic</h6>
+                                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing e</p>
+
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="py-3">
+                                                <h6 style="font-weight: 900;">Content Requirement</h6>
+                                                <p class="pt-2">
+                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores libero, officia quidem beatae illum perferendis consequatur tempora! Nesciunt asperiores recusandae quae rem maxime reprehenderit assumenda. Voluptatum vero iure explicabo ipsa?
+                                                </p>
+
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-0">
+                                            <div class="py-3">
+                                                <h6 style="font-weight: 900;">Attachment</h6>
+                                                <div>
+                                                    <i class="fas fa-file-pdf fa-4x pr-3 icon-r"></i> Logoref.pdf
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="cont-inner-box mt-5 ">
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button" class="btn bg-light accept-sec shadow-sm ">Withdraw my
+                                            application</button>
+                                    </div>
+                                    <div class="d-flex justify-content-center mt-5 my-5">
+                                        <button type="button" class="btn btn-primary  accept">I 've completed my
+                                            task</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

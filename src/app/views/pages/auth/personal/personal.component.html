@@ -1,0 +1,169 @@
+<div class="container-fluid p-0">
+  <div class="row">
+    <div class="col-lg-7 p-0 d-none d-lg-block">
+      <img
+        src="assets/images/welcome.svg "
+        class="img-fluid w-100"
+        alt=""
+        srcset=""
+      />
+    </div>
+    <div class="col-lg-5">
+      <div>
+        <img
+          src="../../../../../assets/images/Back Arrow.svg"
+          (click)="goBack()"
+          style="margin-left: 40px; margin-top: 30px; cursor: pointer"
+        />
+      </div>
+      <div class="roundoff">
+        <!-- <div class="row">
+                    <div class="d-lg-none d-md-block">
+                        <span class="feather icon-arrow-left text-center"  style="font-size: 25px; font-weight: 900;"></span>
+                    </div>
+                </div> -->
+
+        <div class="row">
+          <img
+            src="assets/images/logo.png"
+            alt=""
+            class="d-none d-lg-block logo mx-auto firstimg"
+            srcset=""
+          />
+        </div>
+        <div class="row px-3 py-2">
+          <div>
+            <h2>Personal Detail</h2>
+            <p
+              class="text-muted my-3"
+              style="font-weight: bold; color: black !important"
+            >
+              We would love to know more about you!
+            </p>
+          </div>
+        </div>
+
+        <div class="row px-3 py-3">
+          <form [formGroup]="personalInfoForm" novalidate class="w-100">
+            <div class="form-group">
+              <label for="exampleInputEmail1" class="font-weight-bolder"
+                >Full Name</label
+              >
+              <input
+                [formControl]="personalInfoForm.controls.name"
+                formControlName="name"
+                type="text"
+                (input)="detectName($event)"
+                class="form-control inform mx-auto"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter your name"
+              />
+              <div
+                class="ml-3"
+                style="font-size: 13px"
+                *ngIf="name.invalid && (name.dirty || name.touched)"
+              >
+                <div *ngIf="name.errors.required">
+                  <span class="errorClass">Name is required</span>
+                </div>
+              </div>
+            </div>
+
+            <label class="font-weight-bolder" for="inputPassword4"
+              >Languages Known</label
+            >
+            <mat-chip-list #chipList aria-label="Fruit selection">
+              <div style="width: 100%">
+                <mat-chip
+                  *ngFor="let language of languageKnown"
+                  [selectable]="selectable"
+                  [removable]="removable"
+                  (removed)="removeLanguage(language)"
+                >
+                  {{ language }}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+              </div>
+
+              <input
+                #languageInput
+                type="text"
+                class="form-control languageInput"
+                [formControl]="personalInfoForm.controls.languageKnown"
+                id="inputPassword4"
+                placeholder="..Add language "
+                [matAutocomplete]="languageAtuo"
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="addLanguage($event)"
+              />
+
+              <!-- {{languagesKnown | json}} -->
+            </mat-chip-list>
+
+            <mat-autocomplete
+              #languageAtuo="matAutocomplete"
+              (optionSelected)="selectedLanguage($event)"
+            >
+              <mat-option
+                *ngFor="let language of filteredLanguages | async"
+                [value]="language"
+              >
+                {{ language }}
+              </mat-option>
+            </mat-autocomplete>
+            <!-- </mat-form-field> -->
+
+            <div
+              class="ml-3"
+              style="font-size: 13px"
+              *ngIf="
+                languageKnow.invalid &&
+                (languageKnow.dirty || languageKnow.touched)
+              ">
+              <div *ngIf="isdisabled">
+                <span class="errorClass">Language is required</span>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="row px-3 py-2">
+          <button
+            [disabled]="isdisabled == true"
+            style="display: flex; align-items: center; justify-content: center"
+            (click)="next()"
+            type="button"
+            class="btn btn-warning mx-auto btn-block mt-1 mb-2"
+          >
+            <a class="text-decoration-none text-white">Next</a>
+          </button>
+
+          <!-- <div class="px-5 w-100  my-2">
+                                <h2 class="else"><span class="else2" style="text-align: center; background-color: #f9fafb;"> Or  </span></h2>
+                            </div> -->
+
+          <!-- <button type="button" class="btn btn-light mx-auto  btn-blockmt-1 mb-2"><a
+                                class="text-decoration-none" routerLink="/card" style="color: black;">  <img src="https://img.icons8.com/color/16/000000/google-logo.png" class="mr-3">  Continue with Google</a></button> -->
+        </div>
+        <div class="row bottomtext">
+          <div class="text-center my-3 py-3">
+            <!-- <p>New to Cause ?<a >Sign in</a></p>
+                  -->
+            <p class="text-muted text-center mt-2">
+              By continuing to use mobile app, you agree to Qause’s
+              <a href="" style="color: #253dc0 !important ; font-weight: 600"
+                ><u>Terms</u></a
+              >
+              and
+              <a href="" style="color: #253dc0 !important; font-weight: 600">
+                <u>Privacy Policy</u></a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

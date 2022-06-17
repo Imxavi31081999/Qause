@@ -1,0 +1,272 @@
+<div class="container-fluid p-0">
+  <div class="row">
+    <div class="col-lg-7 p-0 d-none d-lg-block" id="imghh">
+      <img src="assets/images/welcome.svg " id="imgh" alt="" srcset="" />
+    </div>
+    <div class="col-lg-5">
+      <div class="roundoff">
+        <!-- <div class="row">
+                    <div class="d-lg-none d-md-block">
+                        <span class="feather icon-arrow-left text-center" style="font-size: 25px; font-weight: 900;"></span>
+                    </div>
+                </div> -->
+<div *ngIf="donationPopup" class="text-end">
+  <button (click)="closeLoginPopup()" class="closeButton">X</button>
+</div>
+        <!-- Qause logo on Desktop----------------------------------------    -->
+        <div class="row">
+          <img
+            src="assets/images/logo.png"
+            alt=""
+            class="d-none d-lg-block logo mx-auto firstimg"
+            srcset=""
+          />
+        </div>
+        <!-- Qause logo on heading and paragaraph----------------------------------------    -->
+        <div class="row px-3 justify-content-center">
+          <div>
+            <h2 style="font-size: 26px; text-align: center;">Login to Qause</h2>
+            <p class="text-muted my-2" id="profile1">
+              Create your profile on Qause as a volunteer & connect with
+              changemakers around the world!
+            </p>
+          </div>
+        </div>
+        <div class="row px-3 py-2 check--header">
+          <h2 class="fw-bold are--you mt-0 text-center">Are you</h2>
+          <div class="d-flex justify-content-around mt-3">
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input check--circle"
+                type="radio"
+                name="exampleRadios"
+                id="exampleRadios1"
+                value="option1"
+                (click)="isChecked('ngo')"
+              />
+              <label
+                class="form--check_input mb-0 font-weight-bold"
+                style="font-size: 20px"
+                for="exampleRadios1"
+              >
+                NGO
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input check--circle"
+                type="radio"
+                name="exampleRadios"
+                id="exampleRadios2"
+                value="option2"
+                checked
+                (click)="isChecked('volunteer')"
+              />
+              <label
+                class="form--check_input mb-0 font-weight-bold"
+                style="font-size: 20px"
+                for="exampleRadios2"
+              >
+                Volunteer
+              </label>
+            </div>
+          </div>
+          <form
+            (ngSubmit)="loginWithPhone()"
+            [formGroup]="phoneLogin"
+            class="w-100"
+            novalidate
+            *ngIf="!showEmail"
+          >
+            <div class="form-group">
+              <label for="exampleInputEmail1" class="text-muted">Phone</label>
+
+              <div
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                "
+              >
+                <p-dropdown
+                  [options]="items"
+                  [ngModelOptions]="{ standalone: true }"
+                  [(ngModel)]="selectedCode"
+                  name="selectedCode"
+                  filter="true"
+                  filterBy="value"
+                  class="mobile-dopdown"
+                >
+                  <ng-template let-item pTemplate="selectedItem">
+                    <img
+                      src="assets/images/countryFlags/{{
+                        item.label | lowercase
+                      }}.png"
+                      style="width: 16px; vertical-align: middle"
+                    />
+                    <span style="vertical-align: middle; margin-left: 0.5em"
+                      >+{{ item.value }}</span
+                    >
+                  </ng-template>
+                  <ng-template let-car pTemplate="item">
+                    <div
+                      class="ui-helper-clearfix"
+                      style="position: relative; height: 25px"
+                    >
+                      <img
+                        src="assets/images/countryFlags/{{
+                          car.label | lowercase
+                        }}.png"
+                        style="
+                          width: 24px;
+                          position: absolute;
+                          top: 1px;
+                          left: 5px;
+                        "
+                      />
+                      <div
+                        style="font-size: 14px; float: right; margin-top: 4px"
+                      >
+                        +{{ car.value }}
+                      </div>
+                    </div>
+                  </ng-template>
+                </p-dropdown>
+
+                <input
+                  class="form-control inform my-1 mx-auto"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter phone number"
+                  maxlength="10"
+                  formControlName="phone"
+                  [ngClass]="{
+                    changeBorderColorOfInputWhenDuringError:
+                      phone.invalid && (phone.dirty || phone.touched)
+                  }"
+                />
+              </div>
+
+              <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                <div *ngIf="phone.errors.pattern">
+                  <span class="errorClass">Enter a valid phone number</span>
+                </div>
+                <div *ngIf="phone.errors.required">
+                  <span class="errorClass">Phone Number is required</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-right mr-1" *ngIf="!showEmail">
+              <a (click)="showEmail = !showEmail" style="color: #253dc0"
+                >Email</a
+              >
+            </div>
+            <div class="row px-3 py-2">
+              <button
+                class="btn btn-warning mx-auto btn-block mt-1 mb-2"
+                [disabled]="!phoneLogin.valid"
+                style="margin-bottom: 30px"
+              >
+                <a class="text-decoration-none text-white">Get OTP</a>
+              </button>
+            </div>
+          </form>
+
+          <form
+            (ngSubmit)="loginWithEmail()"
+            [formGroup]="emailLogin"
+            class="w-100"
+            novalidate
+            *ngIf="showEmail"
+          >
+            <div class="form-group">
+              <label for="exampleInputEmail1" class="text-muted">Email</label>
+              <input
+                class="form-control inform my-1 mx-auto"
+                id="exampleInputEmail1"
+                type="email"
+                aria-describedby="emailHelp"
+                placeholder="Enter email address"
+                formControlName="email"
+                [ngClass]="{
+                  changeBorderColorOfInputWhenDuringError:
+                    email.invalid && (email.dirty || email.touched)
+                }"
+              />
+              <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                <div *ngIf="email.errors.pattern">
+                  <span class="errorClass">Enter a valid email</span>
+                </div>
+                <div *ngIf="email.errors.required">
+                  <span class="errorClass">Email is required</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-right mr-1" *ngIf="showEmail">
+              <a (click)="showEmail = !showEmail" style="color: #253dc0"
+                >Phone</a
+              >
+            </div>
+            <div class="row px-3 py-2">
+              <button
+                class="btn btn-warning mx-auto btn-block mt-1 mb-2"
+                [disabled]="!emailLogin.valid"
+                style="margin-bottom: 30px"
+              >
+                <a class="text-decoration-none text-white">Get OTP</a>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="row py-2">
+          <div class="w-100">
+            <h2 class="else">
+              <span
+                class="else2"
+                style="text-align: center; background-color: #f9fafb"
+              >
+                Or
+              </span>
+            </h2>
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-light mx-auto btn-blockmt-1 mb-2"
+            (click)="signInWithGoogle()"
+          >
+            <a
+              class="text-decoration-none"
+              style="color: rgb(0, 0, 0); box-sizing: content-box"
+            >
+              <img
+                src="https://img.icons8.com/color/16/000000/google-logo.png"
+                class="mr-4"
+              />
+              Continue with Google</a
+            >
+          </button>
+        </div>
+        <div class="row bottomtext justify-content-center">
+          <div class="text-center py-3">
+            <p style="color: black; font-weight: 500">
+              New to Qause ?<a (click)="navigate()" style="font-weight: bold">
+                Sign up</a
+              >
+            </p>
+            <p class="text-muted text-center mt-3">
+              By continuing to use mobile app, you agree to Qause’s
+              <a href="" style="color: #253dc0 !important; font-weight: 600"
+                ><u>Terms</u></a
+              >
+              and
+              <a href="" style="color: #253dc0 !important; font-weight: 600"
+                ><u>Privacy Policy</u></a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

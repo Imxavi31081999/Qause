@@ -1,0 +1,72 @@
+.chat-wrapper .chat-aside .aside-body .nav-tabs .nav-item a {
+  color: #000;
+  transition: color 0.2s ease-in-out;
+}
+// .nav.nav-tabs .nav-item .nav-link {
+//     /* border-color: #e8ebf1; */
+//     /* border-bottom: 0; */
+//     /* border-right: 0; */
+//     /* color: #000; */
+//     /* background-color: rgba(40, 47, 58, 0.025); */
+// }
+.nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.btn-primesm {
+  height: 17px;
+  border-radius: 5px;
+  line-height: 0;
+  font-weight: normal;
+  font-size: 12px;
+  border: solid 1px #1d24f0;
+}
+
+.activeButton {
+  background: orange;
+  padding: 3px 14px;
+  border-radius: 11px;
+  color: white;
+}
+
+.nav.nav-tabs .nav-item .nav-link.active {
+  background: orange;
+  padding: 3px 14px !important;
+  border-radius: 11px;
+  color: white !important;
+  border: 1px solid orange;
+}
+
+.nav.nav-tabs .nav-item .nav-link {
+  background: white;
+  padding: 3px 14px !important;
+  border-radius: 11px;
+  color: #a5a5a5;
+  border: 1px solid #a5a5a5;
+}
+
+.badge-pill {
+  padding: 0px 6px;
+}
+
+// background: orange; */
+//     padding: 3px 14px;
+//     border-radius: 11px;
+//     color: #a5a5a5;
+//     border: 1px solid;
+
+// my css
+
+@media (min-width: 992px) {
+  .col-lg-3 {
+    flex: 0 0 33.3%;
+    max-width: unset;
+  }
+
+  .col-lg-9 {
+    flex: 0 0 66.6%;
+    max-width: 75%;
+  }
+}

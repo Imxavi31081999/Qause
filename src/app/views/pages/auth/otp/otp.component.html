@@ -1,0 +1,146 @@
+<div class="container-fluid p-0">
+  <div class="row">
+    <div class="col-lg-7 p-0 d-none d-lg-block" id="imghh">
+      <img
+        src="assets/images/welcome.svg "
+        id="imgh"
+        class=""
+        alt=""
+        srcset=""
+      />
+    </div>
+    <div class="col-lg-5">
+      <div *ngIf="!donationPopup">
+        <img
+          src="../../../../../assets/images/Back Arrow.svg"
+          (click)="goBack()"
+          style="margin-left: 40px; margin-top: 30px; cursor: pointer"
+        />
+      </div>
+      <div class="roundoff">
+        <!-- <div class="row">
+                    <div class="d-lg-none d-md-block">
+                        <span class="feather icon-arrow-left text-center"></span>
+                    </div>
+                </div> -->
+        <div *ngIf="donationPopup" class="text-end">
+          <button (click)="closeOtpPopup()" class="closeButton">X</button>
+        </div>
+        <div class="row">
+          <img
+            src="assets/images/logo.png"
+            alt=""
+            class="d-none d-lg-block logo mx-auto firstimg"
+            srcset=""
+          />
+        </div>
+        <div class="row px-3 py-2">
+          <div>
+            <h2 class="text-center">Welcome to Qause</h2>
+            <p
+              class="text-muted my-3"
+              style="font-weight: bold !important; color: black !important"
+            >
+              Let your passion serve the cause
+            </p>
+          </div>
+        </div>
+
+        <div class="row px-3">
+          <form class="w-100">
+            <div class="form-group mt-5">
+              <h4 style="font-weight: bold">Verification</h4>
+              <div class="d-flex justify-content-center align-items-center">
+                <div
+                  id="otp"
+                  class="inputs d-flex flex-row justify-content-center mt-2"
+                >
+                  <div class="verification__Code">
+                    <div class="input_number">
+                      <input
+                        class="form-control"
+                        style="width: auto"
+                        maxlength="6"
+                        minlength="6"
+                        [ngModelOptions]="{ standalone: true }"
+                        [(ngModel)]="otp"
+                        placeholder="......"
+                        (ngModelChange)="checkForOTPValidation($event)"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p *ngIf="showError || invalid">Please enter valid otp</p>
+            </div>
+          </form>
+        </div>
+
+        <div class="row px-3 py-2">
+          <button
+            type="button"
+            style="display: flex; align-items: center; justify-content: center"
+            (click)="validateOtp()"
+            class="btn btn-warning mx-auto btn-block mt-1 mb-2"
+            [disabled]="invalid || initialDisabled"
+          >
+            <a class="text-decoration-none text-white">Next</a>
+          </button>
+          <!-- <div class="px-5 w-100  my-2">
+                        <h2 class="else"><span class="else2 bg-white" style="text-align: center;"> Or </span></h2>
+                    </div> -->
+
+          <!-- <button type="button" class="btn btn-light mx-auto  btn-blockmt-1 mb-2"><a
+                            class="text-decoration-none" routerLink="/card" style="color: black;"> <img
+                                src="https://img.icons8.com/color/16/000000/google-logo.png" class="mr-3">Continue with Google
+                            </a></button> -->
+        </div>
+        <div class="row bottomtext">
+          <div class="text-center my-3">
+            <!-- <p style="font-weight:500;">Already have a account? <a style="font-weight: bold;">Sign in</a></p> -->
+
+            <p class="text-muted text-center mt-2">
+              By continuing to use mobile app, you agree to Qause’s
+              <a href="" style="color: #253dc0 !important; font-weight: 600"
+                ><u>Terms</u></a
+              >
+              and
+              <a href="" style="color: #253dc0 !important; font-weight: 600">
+                <u>Privacy Policy</u></a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        function OTPInput() {
+            const inputs = document.querySelectorAll('#otp > *[id]');
+            for (let i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener('keydown', function(event) {
+                    if (event.key === "Backspace") {
+                        inputs[i].value = '';
+                        if (i !== 0) inputs[i - 1].focus();
+                    } else {
+                        if (i === inputs.length - 1 && inputs[i].value !== '') {
+                            return true;
+                        } else if (event.keyCode > 47 && event.keyCode < 58) {
+                            inputs[i].value = event.key;
+                            if (i !== inputs.length - 1) inputs[i + 1].focus();
+                            event.preventDefault();
+                        } else if (event.keyCode > 64 && event.keyCode < 91) {
+                            inputs[i].value = String.fromCharCode(event.keyCode);
+                            if (i !== inputs.length - 1) inputs[i + 1].focus();
+                            event.preventDefault();
+                        }
+                    }
+                });
+            }
+        }
+        OTPInput();
+    });
+</script> -->

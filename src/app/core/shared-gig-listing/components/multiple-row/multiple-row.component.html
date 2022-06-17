@@ -1,0 +1,72 @@
+<h2 style="color: blue; font-size: 23px;  font-weight: 800 !important; margin-left: 57px; margin-bottom: 30px;">
+  Multiple Volunteer
+</h2>
+<br />
+<div *ngIf="multipleGigs.length>0; else gignotfound">
+  <p-carousel (onPage)="activeNeedPage($event, 'No')" [value]="multipleGigs" [responsiveOptions]="responsiveOptions">
+    <ng-template let-gig pTemplate="item">
+      <div class="card bg-yellow br-30 m-2">
+        <div class="media media-sec-card p-3">
+          <img class="rounded-circle mr-2" height="50"
+            [src]="gig.ngo.logo ? gig.ngo.logo:'../../../../../assets/images/gigAssets/trust.jpeg'"
+            alt="Generic placeholder image " />
+          <div class="media-body my-auto text-capitalize">
+            <p>
+              {{
+              gig.ngo.name ? gig.ngo.name : "Light of Life Trust"
+              }}
+            </p>
+            <p class="tx-11 text-muted">
+              {{
+              gig.ngo.state
+              ? gig.ngo.state + " " + gig.ngo.country
+              : "Haryana, Inida"
+              }}
+            </p>
+          </div>
+        </div>
+        <img [src]="gig.logo ? gig.logo: '../../../../../assets/images/gigAssets/cool-background.svg'"
+          class="card-img-top p-3 br-30" alt="... " />
+
+        <div style="    padding: 1.5rem 1rem;" class="card-body">
+          <h5 class="mb-3" style="font-weight: 900">
+            {{ gig.questionValues.eventType ? gig.questionValues.eventType : "Title Goes Here" }}
+          </h5>
+          <div class="row flexClassForGigs justify-content-around post-actions">
+            <a href="javascript:;" class="d-flex col-6 align-items-center text-muted">
+              <span><img src="assets/images/progress-bar.svg" alt="" srcset="" /></span>
+              <p class="d-none d-md-block ml-2">
+
+
+                {{gig.requests}} of {{gig.questionValues.numberOfVolunteer}} volunteer
+
+              </p>
+            </a>
+
+            <a href="javascript:;" class="d-flex col-6 align-items-right text-muted">
+              <ul style="list-style: none;margin-bottom: 0px; padding: 0;     width: 100%;">
+                <li>
+                  <p class="d-none d-md-block d-inline">
+                    <img src="assets/images/ri_time-line.svg" alt="" srcset="" />
+                    {{getDate(gig.createdAt)}}
+                  </p>
+                  <p class="d-flex">
+                    <img src="assets/images/ri_time-line.svg" alt="" srcset="" />
+                    {{gig.category}}
+                  </p>
+                </li>
+              </ul>
+            </a>
+          </div>
+          <div class="d-flex justify-content-center mt-3">
+            <button type="button " class="btn btn-primary btn-sm accept shadow-sm"
+              style="font-size: 12px; padding: 8px 30px;" (click)="viewMultipleGig(gig)">
+              View Detail
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
+<ng-template #gignotfound> No Gigs Found </ng-template>

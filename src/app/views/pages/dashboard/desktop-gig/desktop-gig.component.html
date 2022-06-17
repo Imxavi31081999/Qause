@@ -1,0 +1,420 @@
+<!-- desktop view -->
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="row">
+            <div class="card w-100 bg-transparent border-0">
+                <div class="card-body bg bg-transparent">
+                    <div class="account-settings text-center">
+                        <div class="user-profile">
+                            <div class="user-avatar">
+                                <img [src]="
+                  gigDetails
+                    ? gigDetails.ngo.logo
+                    : 'https://bootdey.com/img/Content/avatar/avatar7.png'
+                " src=" " class="img-fluid" style="height: 100px" alt="Maxwell Admin" />
+                            </div>
+                            <h5 class="text-center mt-4">
+                                {{ gigDetails ? gigDetails.ngo.name : "Light of Life Trust" }}
+                            </h5>
+                            <a href="" class="text-center mt-3">
+                                {{ gigDetails ? gigDetails.ngo.website : " www.youtube.com" }}
+                            </a>
+                        </div>
+                        <div class="social-icon">
+                            <div class="profileicon text-black">
+                                <a [href]="
+                  gigDetails
+                    ? gigDetails.ngo.social.facebook
+                    : 'https://facebook.com'
+                " target="blank">
+                                    <span><i class="fab fa-facebook"></i></span>
+                                </a>
+                                <a [href]="
+                  gigDetails
+                    ? gigDetails.ngo.social.instagram
+                    : 'https://instagram.com'
+                " target="blank">
+                                    <span><i class="fab fa-instagram"></i></span>
+                                </a>
+                                <a [href]="
+                  gigDetails
+                    ? gigDetails.ngo.social.youtube
+                    : 'https://youtube.com'
+                " target="blank">
+                                    <span><i class="fab fa-youtube"></i></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="w-80 mx-auto" />
+                </div>
+            </div>
+            <div class="card w-100 box-card border-0">
+                <div class="card-body mx-auto">
+                    <div class="icon">
+                        <div class="logo w-80 mx-auto">
+                            <div class="mx-auto">
+                                <div class="logo__life">
+                                    <img src="assets/images/location.svg" alt="" />
+                                    <h4 style="color: #7e7e7e;" class="small-heading my-3">Haryana</h4>
+                                </div>
+
+                                <div class="logo__clock">
+                                    <img src="assets/images/clock.svg" class="" alt="" />
+                                    <h4 style="color: #7e7e7e;" class="small-heading my-3">8hours</h4>
+                                </div>
+
+                                <div class="logo__education">
+                                    <img src="assets/images/Education.svg" alt="" />
+                                    <h4 style="color: #7e7e7e;" class="small-heading my-3">Education</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="col-md-9">
+        <div class="content">
+            <h1 class="h1 font-weight-bolder">
+                {{ gigDetails ? gigDetails.ngo.name : " Design a Facebook Banner" }}
+            </h1>
+            <div class="row px-4 mt-3">
+                <p style="color: #878787">
+                    {{
+                    gigCreatedAt
+                    ? gigCreatedAt[0] +
+                    ", " +
+                    gigCreatedAt[1] +
+                    " " +
+                    gigCreatedAt[2] +
+                    " " +
+                    gigCreatedAt[3]
+                    : "Monday, October 18, 2021"
+                    }}
+                    <span><a style="font-weight: 600" href="">.
+
+                            {{ gigDetails ? gigDetails.ngo.state : "Haryana" }}
+                        </a>
+                    </span>
+                </p>
+            </div>
+            <div style="    margin-top: 1rem;
+            margin-bottom: unset;
+            padding-bottom: unset;
+            " class="content__menu">
+                <div class="row">
+                    <!-- <button type="button" class="btn btn-outline-secondary d-lg-none">Graphic Design</button> -->
+                    <div class="col-md-4 d-none d-lg-block d-sm-block">
+                        <button type="button" style="    padding: 5px 10px;" class="btn btn-outline-dark mx-1">
+                            {{ gigDetails ? gigDetails.category : "Social Media" }}
+                        </button>
+
+
+
+                        <!-- <button type="button" class="btn btn-outline-dark
+                     ">Graphic Design</button> -->
+                    </div>
+                    <div class="col-md-4 d-none d-lg-block d-sm-none">
+                        <!-- <button type="button" class="btn btn-outline-secondary d-lg-none">Graphic Design</button> -->
+                        <!-- <div class="volunteer__details">
+                       
+                          <div class="volunteer__details-profile">
+                              <div class="volunteer__details-img"></div>
+                              <div class="volunteer__details-img"></div>
+                              <div class="volunteer__details-img"></div>
+                              <div class="volunteer__details-img"></div>
+                              <div class="volunteer__details-img"></div>
+                          </div>   
+                      </div> -->
+                    </div>
+                    <div class="col-md-4">
+                        <a href="#" class="content__menu__btn btn btn--orange  " routerLink="/general/gig-congrats"
+                            style="line-height: unset;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;">Apply Now</a>
+                    </div>
+
+                </div>
+                <hr class="w-100" />
+
+            </div>
+
+            <div style="    background-color: #ededed;" class="volunteer">
+                <p class="content__paragraph">
+                    Need 10 volunteers for a clean up Computer Drive in XYZ location at
+                    11:20 am
+                </p>
+            </div>
+
+            <h2 style="    font-weight: 800;" class="content__paragraph-heading mb-4 p-padding">Gig Description
+            </h2>
+            <p style="color: #7e7e7e;" class="content__paragraph">
+                {{ gigDetails ? gigDetails.desc : dummyDesc }}
+            </p>
+
+            <br>
+
+            <p style="color: #7e7e7e;" class="content__paragraph--last">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis
+                suscipit culpa consequatur cupiditate cumque, enim tempore temporibus
+                repellat minus doloremque omnis libero est sequi facilis ipsa aut.
+                Quis, totam numquam! Reiciendis accusamus aliquid distinctio soluta
+                nulla illo, est dolorem perferendis eveniet rerum ducimus excepturi
+                quasi eaque error modi quaerat aut amet. Animi asperiores fugit
+                ratione, sapiente corrupti alias vero. Praesentium. Dolore ex veniam
+                nam sapiente quibusdam ea hic tenetur, fuga ab sequi ipsum dignissimos
+                iure quidem architecto consequatur! Sint vitae at placeat sequi cumque
+                iure id rem reprehenderit dignissimos vero! Quisquam in labore
+                tenetur, laborum suscipit, aliquam architecto saepe quam minus
+                quibusdam, aliquid voluptatum unde facilis ullam sunt. Consequuntur
+                obcaecati expedita quod tempora ipsam tenetur quam molestiae. Ad,
+                iusto ut. Fugit provident, aut sequi amet expedita unde aperiam,
+                magni, nam assumenda tempore consequuntur quia dolor? Quo aspernatur
+                voluptate id non. Sapiente ipsam voluptas inventore facilis quos
+                voluptates, adipisci maxime eveniet!
+            </p>
+            <!-- logos visible in mobile mode -->
+            <hr class="w-100" />
+
+            <h2 style="    font-weight: 800;" class="content__paragraph-heading my-4 p-padding">Volunteer</h2>
+
+            <div class="row">
+                <div class="col-md-5">
+                    <!-- <button type="button" class="btn btn-outline-secondary d-lg-none">Graphic Design</button> -->
+                    <div class="progress yellow mt-3">
+                        <span class="progress-left">
+                            <span class="progress-bar"></span>
+                        </span>
+                        <span class="progress-right">
+                            <span class="progress-bar"></span>
+                        </span>
+                        <div class="progress-value">37.5%</div>
+                    </div>
+                    <p style="    color: #7e7e7e; border: unset;
+                    font-size: 1rem;
+                    font-weight: 600;" class="ml-2 mt-3">3 out of 10 voulunteer Signed Up</p>
+                </div>
+                <div class="col-md-7">
+                    <div class="volunteer__details">
+                        <div class="volunteer__details-profile">
+                            <div class="volunteer__details-img"></div>
+                            <div class="volunteer__details-img"></div>
+                            <div class="volunteer__details-img"></div>
+                            <div class="volunteer__details-img"></div>
+                            <div class="volunteer__details-img"></div>
+                            <div class="volunteer__details-img"></div>
+                            <div class="volunteer__details-img"></div>
+                            <div class="volunteer__details-img"></div>
+                            <div class="volunteer__details-img"></div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+            </div>
+            <hr class="w-100" />
+
+            <h2 style="    font-weight: 800;" class="content__paragraph-heading my-4 p-padding">Attachment</h2>
+
+            <div class=" row mt-3 mb-5">
+                <div class="col-md-3">
+                    <div class="card bg-transparent border-0">
+                        <img class="card-img-top" style="border-radius: 12px" src="assets/images/welcome.svg"
+                            alt="Card image cap" />
+                        <div class="card-img-overlay">
+                            <i class="fas fa-file-archive text-white"></i>
+                        </div>
+                        <div class="card-body bg-none p-0 mt-2">
+                            <p class="card-text">File Name 123bef.svg</p>
+                            <span>yesterday . 157kd</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-transparent border-0">
+                        <img class="card-img-top" style="border-radius: 12px" src="assets/images/welcome.svg"
+                            alt="Card image cap" />
+                        <div class="card-img-overlay">
+                            <i class="fas fa-file-archive text-white"></i>
+                        </div>
+                        <div class="card-body bg-none p-0 mt-2">
+                            <p class="card-text">File Name 123bef.svg</p>
+                            <span>yesterday . 157kd</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-transparent border-0">
+                        <img class="card-img-top" style="border-radius: 12px" src="assets/images/welcome.svg"
+                            alt="Card image cap" />
+                        <div class="card-img-overlay">
+                            <i class="fas fa-file-archive text-white"></i>
+                        </div>
+                        <div class="card-body bg-none p-0 mt-2">
+                            <p class="card-text">File Name 123bef.svg</p>
+                            <span>yesterday . 157kd</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="w-100" />
+
+
+            <div class="content__expirence mt-3">
+                <h2 style="    font-weight: 800;" class="content__paragraph-heading my-4 p-padding">Experiences
+                </h2>
+                <div class="row">
+                    <div class="col-md-7 col-7">
+                        <p class="content__paragraph">
+                            Your experience in the field of request in years.
+                        </p>
+                    </div>
+                    <div class="col-md-5 col-5">
+                        <div class="qty_btn">
+                            <i (click)="updateApplicantExperience('decrease')" class="fa myHoverEffect fa-minus"></i>
+                            <p>{{applicantExperience}}</p>
+                            <i (click)="updateApplicantExperience('increase')" class="fa myHoverEffect fa-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="w-100" />
+
+
+            <div class="content__timeslot">
+                <h2 style="    font-weight: 800;" class="content__paragraph-heading my-4 p-padding">
+                    Prefered Time Slot
+                </h2>
+                <p class="content__paragraph">
+                    Pick the time you want to select that suit with your timeslot.
+                </p>
+
+                <div class="select">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="select--day mb-5 mt-2">
+                                <h4 class="small-heading my-3">Day of the week</h4>
+                                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button
+                                  group">
+                                    <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" />
+                                    <label class="btn btn-outline" for="btncheck1">Mo</label>
+
+                                    <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" />
+                                    <label class="btn btn-outline" for="btncheck2">Tu</label>
+
+                                    <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" />
+                                    <label class="btn btn-outline" for="btncheck3">We</label>
+
+                                    <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" />
+                                    <label class="btn btn-outline" for="btncheck4">Th</label>
+
+                                    <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" />
+                                    <label class="btn btn-outline" for="btncheck5">Fr</label>
+
+                                    <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" />
+                                    <label class="btn btn-outline" for="btncheck6">St</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 col-6">
+                            <div class="select__from">
+                                <h4 class="small-heading my-3">From</h4>
+
+                                <!-- <div class="btn-group">
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-primary dropdown-toggle"
+                                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                            </li>
+                                            <li>
+                                                <hr class="dropdown-divider" />
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div> -->
+                                <input type="time" value="09:30" class=" btn-group form-control" name="form" id="form">
+                            </div>
+                        </div>
+
+                        <div class="col-md-2 col-6">
+                            <div class="select--to content__paragraph--last">
+                                <h4 class="small-heading my-3">To</h4>
+
+                                <!-- <div class="btn-group">
+                                    <button type="button" class="btn btn-primary dropdown-toggle"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider" />
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">Separated link</a>
+                                        </li>
+                                    </ul>
+                                </div> -->
+
+                                <input type="time" value="12:30" class=" btn-group form-control" name="form" id="form">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="w-100" />
+
+            <div class="row">
+                <div class="content__experience w-100">
+                    <h2 style="    font-weight: 800;" class="content__paragraph-heading my-4 p-padding">
+                        Describe your experience in the field in brief (Optional)
+                    </h2>
+                    <div class="form-floating mb-5">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                            style="height: 170px; border-radius: 12px"></textarea>
+                    </div>
+                    <a style="line-height: unset;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;" routerLink="/general/gig-congrats"
+                        class="content__menu__btn btn btn--orange mb-5">Apply
+                        Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<button (click)="goToChatting()" class="btn btn-primary">
+    start chatting
+</button>

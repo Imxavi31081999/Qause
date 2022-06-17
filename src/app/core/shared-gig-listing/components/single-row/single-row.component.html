@@ -1,0 +1,48 @@
+<h2 style="color: blue; font-size: 23px;  font-weight: 800 !important; margin-left: 57px; margin-bottom: 30px;">
+  Single Volunteer
+</h2>
+<br />
+<div *ngIf="singleGigs.length> 0 ; else gignotfound">
+  <p-carousel [value]="singleGigs" [responsiveOptions]="responsiveOptions">
+    <ng-template let-gig pTemplate="item">
+      <div class="card bg-yellow br-30 m-2">
+        <div class="media media-sec-card p-3">
+          <img class="rounded-circle mr-2" height="50"
+            [src]="gig.ngo.logo ? gig.ngo.logo:'../../../../../assets/images/gigAssets/trust.jpeg'"
+            alt="Generic placeholder image" />
+          <div class="media-body my-auto text-capitalize">
+            <h6 class="m-0">{{
+              gig.ngo.name ? gig.ngo.name : "Light of Life Trust"
+              }}</h6>
+            <p class="m-0"> {{
+              gig.ngo.state
+              ? gig.ngo.state + " " + gig.ngo.country
+              : "Haryana, Inida"
+              }}</p>
+          </div>
+        </div>
+        <img [src]="gig.logo ? gig.logo: '../../../../../assets/images/gigAssets/cool-background.svg'"
+          class="card-img-top p-3 br-30" alt="..." />
+
+        <div class="card-body text-capitalize">
+          <h5> {{ gig.questionValues.needTitle ? gig.questionValues.needTitle :"Design a new Logo"}}</h5>
+          <div class="d-flex justify-content-between my-2">
+            <div><i class="fas fa-book-open pr-2 icon-c"></i> {{gig.category}} </div>
+            <div>
+              <i class="fa fa-clock pr-2 icon-c" aria-hidden="true"> </i>
+              {{getDate(gig.createdAt)}}
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center mt-3">
+            <button type="button" class="btn btn-primary btn-sm accept shadow-sm text-white"
+              (click)="viewSingleGig(gig)">
+              View Detail
+            </button>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>
+<ng-template #gignotfound> Gigs not found </ng-template>
