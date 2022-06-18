@@ -919,13 +919,13 @@ a {
 //   margin-top: 0;
 // }
 
-a {
-  color: #FF6B6B;
-}
-a:hover {
-  color: #ff9a9a;
-  text-decoration: none;
-}
+// a {
+//   color: #FF6B6B;
+// }
+// a:hover {
+//   color: #ff9a9a;
+//   text-decoration: none;
+// }
 
 .example-header {
   background: #3D4351;
@@ -1273,27 +1273,27 @@ a:hover {
   scrollbar-width: none;
 }
 
-p {
-  font-weight: 300;
-}
-a {
-  color: #6c6d6d;
-  text-decoration: none;
-  text-transform: uppercase;
-  display: block;
-  letter-spacing: 0.3em;
-  font-size: 0.6em;
-  font-weight: 400;
-  background: #252727;
-  padding: 0.3rem 1rem;
-  margin: 1.9rem 0 0 0;
-  float: right;
-}
-a:hover {
-  color: white;
-  background: #004ffc;
-  border-bottom: 0.35em solid black;
-}
+// p {
+//   font-weight: 300;
+// }
+// a {
+//   color: #6c6d6d;
+//   text-decoration: none;
+//   text-transform: uppercase;
+//   display: block;
+//   letter-spacing: 0.3em;
+//   font-size: 0.6em;
+//   font-weight: 400;
+//   background: #252727;
+//   padding: 0.3rem 1rem;
+//   margin: 1.9rem 0 0 0;
+//   float: right;
+// }
+// a:hover {
+//   color: white;
+//   background: #004ffc;
+//   border-bottom: 0.35em solid black;
+// }
 strong {
   font-weight: 600;
 }
@@ -1416,4 +1416,18 @@ h1 {
   top: 24px;
   bottom: 0;
   left: 6px;
+}
+
+
+.line {
+  height: 2px;
+  background: lightgrey;
+  width: 100%;
+  margin: 60px 0px;
+}
+
+.outline-p {
+  border: solid 1px;
+  padding: 30px;
+  border-radius: 20px;
 }

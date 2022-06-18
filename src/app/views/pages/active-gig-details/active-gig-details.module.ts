@@ -8,6 +8,7 @@ import { DesktopActiveSingleComponent } from './singleGig/desktop-active-single/
 import { ActiveMultipleComponent } from './multipleGig/active-multiple/active-multiple.component';
 import { MobileActiveMultipleComponent } from './multipleGig/mobile-active-multiple/mobile-active-multiple.component';
 import { DesktopActiveMultipleComponent } from './multipleGig/desktop-active-multiple/desktop-active-multiple.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -16,7 +17,8 @@ import { DesktopActiveMultipleComponent } from './multipleGig/desktop-active-mul
   imports: [
     CommonModule,
     ActiveGigDetailsRoutingModule,
-    SharedModule
+    SharedModule,
+    MatTabsModule
   ]
 })
 export class ActiveGigDetailsModule { }
